@@ -1,0 +1,10 @@
+.contacts {
+  margin-top: 1.6rem;
+}
+.contacts :last-child .contacts__left,
+.contacts :last-child .contacts__right {
+  border-bottom: none;
+}
+.contacts .link {
+  text-decoration: underline;
+}

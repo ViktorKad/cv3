@@ -1,0 +1,19 @@
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.link,
+.link:active,
+.link:visited {
+  color: #166ca1;
+}
+.link:hover {
+  color: #1c8ace;
+}
+.link_inner {
+  text-decoration: none;
+  border-bottom: 1px dotted #166ca1;
+}
+.link_inner:hover {
+  border-bottom: 1px dotted #1c8ace;
+}

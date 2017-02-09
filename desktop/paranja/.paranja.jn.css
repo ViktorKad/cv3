@@ -1,0 +1,40 @@
+.paranja {
+  z-index: 100;
+  display: block;
+}
+.js__support_yes.js__good_yes.flex__support_yes .paranja {
+  display: none;
+}
+.paranja,
+.paranja:before,
+.paranja__bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.paranja:before {
+  content: '';
+  background-color: #010101;
+  background-image: url("../../desktop/paranja/assets/paranja__bg.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+.paranja__bg {
+  background-color: rgba(0,0,0,0.8);
+}
+.paranja__content {
+  position: fixed;
+  top: 30%;
+  width: 50%;
+  left: 50%;
+  margin-left: -25%;
+  padding: 3.2rem;
+  background-color: #3f414e;
+  color: #fbfbfb;
+  letter-spacing: 1px;
+}
+.paranja .link {
+  color: #f17351;
+}

@@ -1,0 +1,28 @@
+.block
+    background-color #FBFBFB
+    color #3F414E
+
+    &__title
+        border-bottom 1px solid rgba(0, 0, 0, .1)
+        line-height 8rem
+        margin 0 3.2rem
+        font-size 3.2rem
+        letter-spacing 1px;
+        text-align right
+    
+    &__content
+        margin 0 3.2rem
+        padding-bottom 2.8rem
+
+    &_theme_dark
+        background-color #3F414E
+        color #DCDEE0
+
+        .block__title
+            text-align start
+            border-bottom 1px solid rgba(255, 255, 255, .1)
+            color #f17351
+
+    &_title_off
+        .block__title
+            display none

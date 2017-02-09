@@ -1,0 +1,10 @@
+{
+    "lang_file": "lang.jn.json",
+    "lang_default": "ru",
+    "lang_list": ["ru"],
+    "tmpl_levels": [
+        ["common", "desktop"],
+        ["common", "mobile"]
+    ],
+    "start_folder": "document"
+}
