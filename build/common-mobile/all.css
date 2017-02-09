@@ -1,0 +1,179 @@
+/*- common/contacts/.contacts.jn.css @ -*/
+.contacts__line {
+  display: flex;
+  align-content: stretch;
+}
+.contacts__left,
+.contacts__right {
+  display: inline-block;
+  flex: 1 1 50%;
+  border-bottom: 0.2rem solid rgba(0,0,0,0.1);
+  padding: 1rem 0;
+}
+.contacts__left {
+  padding-right: 1rem;
+}
+ 
+/*- @ common/contacts/.contacts.jn.css -*/
+/*- common/tags/.tags.jn.css @ -*/
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.link,
+.link:active,
+.link:visited {
+  color: #166ca1;
+}
+.link:hover {
+  color: #1c8ace;
+}
+.link_inner {
+  text-decoration: none;
+  border-bottom: 1px dotted #166ca1;
+}
+.link_inner:hover {
+  border-bottom: 1px dotted #1c8ace;
+}
+ 
+/*- @ common/tags/.tags.jn.css -*/
+/*- mobile/block/.block.jn.css @ -*/
+.block {
+  background-color: #fbfbfb;
+  color: #3f414e;
+}
+.block__title {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  line-height: 8rem;
+  margin: 0 3.2rem;
+  font-size: 3.2rem;
+  letter-spacing: 1px;
+  text-align: right;
+}
+.block__content {
+  margin: 0 3.2rem;
+  padding-bottom: 2.8rem;
+}
+.block_theme_dark {
+  background-color: #3f414e;
+  color: #dcdee0;
+}
+.block_theme_dark .block__title {
+  text-align: start;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #f17351;
+}
+.block_title_off .block__title {
+  display: none;
+}
+ 
+/*- @ mobile/block/.block.jn.css -*/
+/*- mobile/contacts/.contacts.jn.css @ -*/
+.contacts {
+  margin-top: 1.6rem;
+}
+.contacts :last-child .contacts__left,
+.contacts :last-child .contacts__right {
+  border-bottom: none;
+}
+.contacts .link {
+  text-decoration: underline;
+}
+ 
+/*- @ mobile/contacts/.contacts.jn.css -*/
+/*- mobile/paranja/.paranja.jn.css @ -*/
+.paranja {
+  z-index: 100;
+  display: block;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 0 3.2rem;
+  padding-top: 20%;
+  color: #fbfbfb;
+}
+.js__support_yes.js__good_yes.flex__support_yes .paranja {
+  display: none;
+}
+ 
+/*- @ mobile/paranja/.paranja.jn.css -*/
+/*- mobile/top/.top.jn.css @ -*/
+.top {
+  padding-top: 2.8rem;
+  border-left: 0.8rem solid #f17351;
+}
+.top.block .block__content {
+  margin-left: 2.4rem;
+}
+ 
+/*- @ mobile/top/.top.jn.css -*/
+/*- mobile/history/.history.jn.css @ -*/
+.history {
+  border-top: 1px solid #f17351;
+}
+.history__label {
+  color: #3f414e;
+  margin-bottom: 1.4rem;
+}
+.block_theme_dark .history__label {
+  color: #fbfbfb;
+}
+.history__position {
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+}
+.history__desc {
+  font-style: italic;
+}
+.history__title {
+  display: inline-block;
+  padding-left: 3.2rem;
+  border-top: 0.8rem solid #f17351;
+}
+.history.history_right .history__title {
+  padding-left: 0;
+  padding-right: 3.2rem;
+}
+.history .block__title {
+  margin: 0;
+  border-bottom: none;
+}
+.history.history_right .block__title {
+  text-align: right;
+}
+ 
+/*- @ mobile/history/.history.jn.css -*/
+/*- mobile/footer/.footer.jn.css @ -*/
+.footer__item,
+.footer .block__content {
+  padding-top: 2rem;
+}
+.footer_last {
+  padding-bottom: 2rem;
+}
+ 
+/*- @ mobile/footer/.footer.jn.css -*/
+/*- mobile/document/.document.jn.css @ -*/
+html {
+  font-size: 16px;
+}
+body {
+  font-family: Verdana, Geneva, Tahoma, Arial, sans-serif;
+  background-color: #3f414e;
+  font-size: 2.4rem;
+  line-height: 4.4rem;
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: 100%;
+  display: none;
+}
+.js__support_yes.js__good_yes.flex__support_yes .content {
+  display: block;
+}
+ 
+/*- @ mobile/document/.document.jn.css -*/

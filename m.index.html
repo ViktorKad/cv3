@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="js__support_no js__good_no flex__support_no">
+<head>
+	<title>Резюме</title>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+(function() {
+    // Проверка поддержки нужных css свойств
+    var techs = [
+        'flex',
+        'justifyContent',
+        'alignContent',
+        'alignItems',
+        'flexShrink',
+        'flexGrow',
+        'flexBasis'
+    ];
+
+    for (var i in techs) {
+        if (typeof techs[i] === 'undefined') {
+            return;
+        }
+    }
+
+    window.isFlexboxOn = true;
+})();
+
+(function() {
+    // Проверка поддержки нужных js функций
+    if (!Array.prototype.filter) {
+        return;
+    }
+
+    window.isGoodJsSupport = true;
+})();
+
+(function() {
+    var html = document.getElementsByTagName('html')[0];
+
+    setMod(html, 'js', 'support', 'yes');
+
+    if (window.isFlexboxOn) {
+        setMod(html, 'flex', 'support', 'yes');
+    }
+
+    if (window.isGoodJsSupport) {
+        setMod(html, 'js', 'good', 'yes');
+    }
+
+    function setMod(elem, cls, mod, value) {
+        var SPLITTER_MOD = '__',
+            SPLITTER_VAL = '_';
+
+        elem.className = elem.className.split(' ').map(function(item) {
+            var itemSplit = item.split(SPLITTER_MOD),
+                clsName = itemSplit[0],
+                modName = itemSplit[1].split(SPLITTER_VAL)[0];
+
+            if (clsName !== cls && modName !== mod) {
+                return item;
+            }
+
+            return clsName + SPLITTER_MOD + modName + SPLITTER_VAL + value;
+        }).join(' ');
+    }
+})();
+</script>
+    <style type="text/css">
+/*
+http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+</style>
+    <link rel="stylesheet" href="./m.index.css">
+</head>
+<body>
+    <div class="paranja">
+    Привет. Твой браузер не поддерживает современную спецификацию flexbox или в браузере отключен JavaScript.
+    Предыдущую версию резюме можно посмотреть здесь - <a class="link" href="#">#</a>
+</div>
+    <div class="content">
+        <div class="block block_title_off top">
+    <div class="block__title">
+        
+    </div>
+    <div class="block__content">
+        <div>Привет.</div>
+<div>Меня зовут Виктор. Я занимаюсь frontend разработкой и предлагаю ознакомиться с моим резюме.</div>
+<div class="contacts">
+    <div class="contacts__line">
+    <div class="contacts__left">Email</div>
+    <div class="contacts__right"><a class="link link_inner" href="mailto:v.kadeg@gmail.ru">v.kadeg@gmail.com</a></div>
+</div><div class="contacts__line">
+    <div class="contacts__left">Ссылки</div>
+    <div class="contacts__right"><a class="link" href="Https://github.com/ViktorKad">github.com</a>, <a class="link" href="#">cv.pdf</a></div>
+</div><div class="contacts__line">
+    <div class="contacts__left">Город</div>
+    <div class="contacts__right">Санкт-Петербург</div>
+</div>
+</div>
+    </div>
+</div>
+        <div class="block history block_theme_dark">
+    <div class="block__title">
+        <div class="history__title">
+    с 2015 года
+</div>
+    </div>
+    <div class="block__content">
+        <div class="history__label">
+    ООО "Яндекс"
+</div><div class="history__position">
+    Разработчик интерфейсов
+</div><div class="history__desc">
+    Группа разработки главной страницы
+</div>
+    </div>
+</div><div class="block history block_theme_dark history_right">
+    <div class="block__title">
+        <div class="history__title">
+    2012 - 2014
+</div>
+    </div>
+    <div class="block__content">
+        <div class="history__label">
+    ЗАО "Банк Советский"
+</div><div class="history__position">
+    Разработчик интерфейсов
+</div><div class="history__desc">
+    Разработка внутренних web-приложений
+</div>
+    </div>
+</div><div class="block history block_theme_dark">
+    <div class="block__title">
+        <div class="history__title">
+    2011 - 2012
+</div>
+    </div>
+    <div class="block__content">
+        <div class="history__label">
+    Агентства недвижимости "Абсолют" и "21й век групп"
+</div><div class="history__position">
+    Специалист по рекламе
+</div><div class="history__desc">
+    Доставка рекламы, участие в создании нескольких сайтов-визиток для фирм партнеров
+</div>
+    </div>
+</div><div class="block history block_theme_dark history_right">
+    <div class="block__title">
+        <div class="history__title">
+    2013 - 2015
+</div>
+    </div>
+    <div class="block__content">
+        <div class="history__label">
+    Санкт-Петербургский Государственный Университет
+</div><div class="history__position">
+    Математико-механический факультет
+</div><div class="history__desc">
+    Математическое обеспечение и администрирование информационных систем
+</div>
+    </div>
+</div><div class="block history block_theme_dark">
+    <div class="block__title">
+        <div class="history__title">
+    2012 - 2012
+</div>
+    </div>
+    <div class="block__content">
+        <div class="history__label">
+    Санкт-Петербургский Государственный Политехнический Университет
+</div><div class="history__position">
+    Разработка динамических web-приложений с применением Php и MySQL, технологии AJAX
+</div><div class="history__desc">
+    Курсы переподготовки специалистов
+</div>
+    </div>
+</div><div class="block history block_theme_dark history_right">
+    <div class="block__title">
+        <div class="history__title">
+    2013 - 2015
+</div>
+    </div>
+    <div class="block__content">
+        <div class="history__label">
+    Санкт-Петербургский государственный лесотехнический университет им. С.М. Кирова
+</div><div class="history__position">
+    Кафедра лесной таксации и лесоустройства
+</div><div class="history__desc">
+    Применение беспилотных летательных аппаратов для лесного планирования
+</div>
+    </div>
+</div>
+        <div class="block block_title_off footer">
+    <div class="block__title">
+        
+    </div>
+    <div class="block__content">
+        <div class="footer__item">
+    Последннее время повседневно использую: JavaScript, Bem, Stylus, jQuery, Git.
+</div>
+<div class="footer__item">
+    Использовал, изучал, интересовался: Python, Java, Php, SQL, C/C++, Bash, TypeScript, LESS.
+</div>
+<div class="footer__item">
+    В каждом из проектов, в которых я участвовал было довольно много интересных задач.
+</div>
+<div class="footer__item">
+    В банке многое было связано с разработкой анкет, форм, шлюзов, работой с КЛАДРом.
+</div>
+<div class="footer__item">
+    В Яндексе были как задачи на поддержку большой существующей кодовой базы, так и множество задач на создание новых блоков. А так как главная страница Яндекса должна работать корректно на максимальном количестве устройств, в которые помимо экзотических десктопных браузеров входят телевизоры, телефоны и планшеты (включая очень старые модели), то находились самые разнообразные задачи на верстку.
+</div>
+    </div>
+</div><div class="block block_theme_dark block_title_off footer footer_last">
+    <div class="block__title">
+        
+    </div>
+    <div class="block__content">
+        <div class="footer__item">
+    <a class="link" href="#">Перейти на полную версию</a>
+</div>
+<div class="footer__item">
+    Резюме собрано на базе шаблонизатора, код которого можно посмотреть в моем <a class="link" href="#"> GitHub репозитории</a>
+</div>
+<div class="footer__item">
+    А здесь доступна <a class="link" href="#">прошлая версия моего резюме</a>
+</div>
+    </div>
+</div>
+    </div>
+</body>
+</html>
