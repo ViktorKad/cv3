@@ -204,9 +204,6 @@
 /*- @ ./node_modules/jn/lib/client.jn.js -*/
 
 jn.setLevel('common');
-/*- common/.DS_Store/.DS_Store.jn.html @ -*/
- 
-/*- @ common/.DS_Store/.DS_Store.jn.html -*/
 /*- common/contacts/contacts.jn.html @ -*/
 
 jn.create('contacts__layout',
@@ -368,9 +365,6 @@ jn.create('p',
 /*- @ common/tags/tags.jn.html -*/
 
 jn.setLevel('desktop');
-/*- desktop/.DS_Store/.DS_Store.jn.html @ -*/
- 
-/*- @ desktop/.DS_Store/.DS_Store.jn.html -*/
 /*- desktop/columns/columns.jn.html @ -*/
 
 jn.create('columns',
