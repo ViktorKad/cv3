@@ -23,17 +23,17 @@
 .link,
 .link:active,
 .link:visited {
-  color: #166ca1;
+  color: #348abf;
 }
 .link:hover {
-  color: #1c8ace;
+  color: #489ed3;
 }
 .link_inner {
   text-decoration: none;
-  border-bottom: 1px dotted #166ca1;
+  border-bottom: 1px dotted #348abf;
 }
 .link_inner:hover {
-  border-bottom: 1px dotted #1c8ace;
+  border-bottom: 1px dotted #489ed3;
 }
  
 /*- @ common/tags/.tags.jn.css -*/
