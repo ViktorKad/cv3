@@ -79,6 +79,9 @@
 .contacts .link {
   text-decoration: underline;
 }
+.contacts .link_inner {
+  text-decoration: none;
+}
  
 /*- @ mobile/contacts/.contacts.jn.css -*/
 /*- mobile/paranja/.paranja.jn.css @ -*/

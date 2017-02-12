@@ -8,3 +8,6 @@
 .contacts .link {
   text-decoration: underline;
 }
+.contacts .link_inner {
+  text-decoration: none;
+}
