@@ -1,3 +1,7 @@
+.timeline {
+  max-width: 1440px;
+  width: 100%;
+}
 .timeline__part {
   display: flex;
 }
@@ -44,26 +48,27 @@
 }
 .timeline__left .timeline__desc {
   padding-right: 4.8rem;
-  border-top: 0.3rem solid #f17351;
+  border-top: 0.4rem solid #f17351;
   width: 100%;
 }
 .timeline__right .timeline__desc {
   padding-left: 4.8rem;
-  border-top: 0.3rem solid #fbfbfb;
+  border-top: 0.4rem solid #fbfbfb;
 }
 .timeline__desc div {
   margin-top: 0.8rem;
 }
 .timeline__date {
   display: inline-block;
+  padding-top: 2rem;
 }
 .timeline__left .timeline__date {
   padding-right: 4.8rem;
-  border-top: 0.3rem solid #f17351;
+  border-top: 0.4rem solid #f17351;
 }
 .timeline__right .timeline__date {
   padding-left: 4.8rem;
-  border-top: 0.3rem solid #fbfbfb;
+  border-top: 0.4rem solid #fbfbfb;
 }
 .timeline__label {
   letter-spacing: 0.1rem;

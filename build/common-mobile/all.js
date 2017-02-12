@@ -361,7 +361,11 @@ jn.create('link',
 jn.create('p',
 '<p class="[% cls %]">' +
 '    [% text %]' +
-'</p>'); 
+'</p>');
+jn.create('h',
+'<h2 class="[% cls %]">' +
+'    [% text %]' +
+'</h2>'); 
 /*- @ common/tags/tags.jn.html -*/
 
 jn.setLevel('mobile');

@@ -1,5 +1,7 @@
 .columns {
   display: flex;
+  max-width: 1440px;
+  width: 100%;
 }
 .columns__left,
 .columns__right {

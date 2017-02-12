@@ -1,3 +1,7 @@
 .footer .text {
   margin-bottom: 2rem;
 }
+.footer .columns__left,
+.footer .columns__right {
+  padding-top: 0;
+}

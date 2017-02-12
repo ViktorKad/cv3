@@ -7,7 +7,7 @@
 .contacts__right {
   display: inline-block;
   flex: 1 1 50%;
-  border-bottom: 0.2rem solid rgba(0,0,0,0.1);
+  border-bottom: 0.2rem solid rgba(255,255,255,0.1);
   padding: 1rem 0;
 }
 .contacts__left {
@@ -40,6 +40,8 @@
 /*- desktop/columns/.columns.jn.css @ -*/
 .columns {
   display: flex;
+  max-width: 1440px;
+  width: 100%;
 }
 .columns__left,
 .columns__right {
@@ -74,7 +76,7 @@
 /*- desktop/about-techs/.about-techs.jn.css @ -*/
 .about-techs .columns__left,
 .about-techs .columns__right {
-  padding-top: 9.6rem;
+  padding-top: 6.4rem;
 }
 .about-techs .text {
   padding-top: 3.2rem;
@@ -124,7 +126,18 @@
 }
  
 /*- @ desktop/paranja/.paranja.jn.css -*/
+/*- desktop/top/.top.jn.css @ -*/
+.top h2 {
+  margin: 1rem 0;
+  font-size: 2.8rem;
+}
+ 
+/*- @ desktop/top/.top.jn.css -*/
 /*- desktop/timeline/.timeline.jn.css @ -*/
+.timeline {
+  max-width: 1440px;
+  width: 100%;
+}
 .timeline__part {
   display: flex;
 }
@@ -171,26 +184,27 @@
 }
 .timeline__left .timeline__desc {
   padding-right: 4.8rem;
-  border-top: 0.3rem solid #f17351;
+  border-top: 0.4rem solid #f17351;
   width: 100%;
 }
 .timeline__right .timeline__desc {
   padding-left: 4.8rem;
-  border-top: 0.3rem solid #fbfbfb;
+  border-top: 0.4rem solid #fbfbfb;
 }
 .timeline__desc div {
   margin-top: 0.8rem;
 }
 .timeline__date {
   display: inline-block;
+  padding-top: 2rem;
 }
 .timeline__left .timeline__date {
   padding-right: 4.8rem;
-  border-top: 0.3rem solid #f17351;
+  border-top: 0.4rem solid #f17351;
 }
 .timeline__right .timeline__date {
   padding-left: 4.8rem;
-  border-top: 0.3rem solid #fbfbfb;
+  border-top: 0.4rem solid #fbfbfb;
 }
 .timeline__label {
   letter-spacing: 0.1rem;
@@ -205,6 +219,10 @@
 /*- desktop/footer/.footer.jn.css @ -*/
 .footer .text {
   margin-bottom: 2rem;
+}
+.footer .columns__left,
+.footer .columns__right {
+  padding-top: 0;
 }
  
 /*- @ desktop/footer/.footer.jn.css -*/
@@ -234,9 +252,9 @@ html {
 }
 body {
   font-family: Verdana, Geneva, Tahoma, Arial, sans-serif;
-  background-color: #fbfbfb;
-  font-size: 2.4rem;
-  line-height: 3.6rem;
+  background-color: rgba(0,0,0,0.1);
+  font-size: 2rem;
+  line-height: 2.8rem;
 }
 .content {
   position: absolute;
@@ -245,9 +263,11 @@ body {
   min-height: 100%;
   width: 100%;
   display: none;
+  align-items: center;
+  flex-direction: column;
 }
 .js__support_yes.js__good_yes.flex__support_yes .content {
-  display: block;
+  display: flex;
 }
  
 /*- @ desktop/document/.document.jn.css -*/

@@ -361,7 +361,11 @@ jn.create('link',
 jn.create('p',
 '<p class="[% cls %]">' +
 '    [% text %]' +
-'</p>'); 
+'</p>');
+jn.create('h',
+'<h2 class="[% cls %]">' +
+'    [% text %]' +
+'</h2>'); 
 /*- @ common/tags/tags.jn.html -*/
 
 jn.setLevel('desktop');
@@ -439,13 +443,12 @@ jn.create('paranja',
 /*- desktop/top/top.jn.js @ -*/
 jn.create('top', function () {
     return jn.exec('columns', {
-        left: jn.exec('contacts'),
-        right: jn.exec('box', {
-            content: [
-                jn.exec('p', {text: '[% lang:head.hello %]'}),
-                jn.exec('p', {text: '[% lang:head.desc %]'})
-            ].join('')
-        })
+        cls: 'top',
+        left: [
+            jn.exec('h', {text: '[% lang:head.hello %]'}),
+            jn.exec('p', {text: '[% lang:head.desc %]'})
+        ].join(''),
+        right: jn.exec('contacts')
     });
 });
  
