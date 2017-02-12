@@ -32,4 +32,3 @@ public:
 	git push origin gh-pages
 	make clean
 	make checkout master
-
