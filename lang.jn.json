@@ -18,7 +18,7 @@
         "ru": "Ссылки"
     },
     "contacts.links.value": {
-        "ru": "<a class=\"link\" href=\"Https://github.com/ViktorKad\">github.com</a>, <a class=\"link\" href=\"#\">cv.pdf</a>"
+        "ru": "<a class=\"link\" href=\"https://github.com/ViktorKad\">github.com</a>, <a class=\"link\" href=\"./cv.pdf\">cv.pdf</a>"
     },
     "contacts.city.key": {
         "ru": "Город"
@@ -111,7 +111,7 @@
         "ru": "Использовал, изучал, интересовался: Python, Java, Php, SQL, C/C++, Bash, TypeScript, LESS."
     },
     "footer.about.common": {
-        "ru": "В каждом из проектов, в которых я участвовал было довольно много интересных задач."
+        "ru": "В каждом из проектов, в которых я участвовал, было довольно много интересных задач."
     },
     "footer.about.bank": {
         "ru": "В банке многое было связано с разработкой анкет, форм, шлюзов, работой с КЛАДРом."
@@ -123,15 +123,15 @@
         "ru": ""
     },
     "footer.mobile": {
-        "ru": "У моего резюме так же есть <a class=\"link\" href=\"#\">мобильная версия</a>"
+        "ru": "У моего резюме так же есть <a class=\"link\" href=\"https://viktorkad.github.io/cv3/\">мобильная версия</a>"
     },
     "footer.desktop": {
-        "ru": "<a class=\"link\" href=\"#\">Перейти на полную версию</a>"
+        "ru": "<a class=\"link\" href=\"https://viktorkad.github.io/cv3/m.index.html\">Перейти на полную версию</a>"
     },
     "footer.github": {
-        "ru": "Резюме собрано на базе шаблонизатора, код которого можно посмотреть в моем <a class=\"link\" href=\"#\"> GitHub репозитории</a>"
+        "ru": "Резюме собрано на базе шаблонизатора, код которого можно посмотреть в моем <a class=\"link\" href=\"https://github.com/ViktorKad\"> GitHub репозитории</a>"
     },
     "footer.past_cv": {
-        "ru": "А здесь доступна <a class=\"link\" href=\"#\">прошлая версия моего резюме</a>"
+        "ru": "А здесь доступна <a class=\"link\" href=\"https://viktorkad.github.io/cv/\">прошлая версия моего резюме</a>"
     }
 }
