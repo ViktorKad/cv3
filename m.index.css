@@ -8,7 +8,7 @@
   display: inline-block;
   flex: 1 1 50%;
   border-bottom: 0.2rem solid rgba(255,255,255,0.1);
-  padding: 1rem 0;
+  padding: 0.8rem 0;
 }
 .contacts__left {
   padding-right: 1rem;

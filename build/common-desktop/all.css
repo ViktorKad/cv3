@@ -8,7 +8,7 @@
   display: inline-block;
   flex: 1 1 50%;
   border-bottom: 0.2rem solid rgba(255,255,255,0.1);
-  padding: 1rem 0;
+  padding: 0.8rem 0;
 }
 .contacts__left {
   padding-right: 1rem;
@@ -40,8 +40,9 @@
 /*- desktop/columns/.columns.jn.css @ -*/
 .columns {
   display: flex;
-  max-width: 1440px;
+  max-width: 1280px;
   width: 100%;
+  color: #fbfbfb;
 }
 .columns__left,
 .columns__right {
@@ -127,6 +128,34 @@
  
 /*- @ desktop/paranja/.paranja.jn.css -*/
 /*- desktop/top/.top.jn.css @ -*/
+.top {
+  background-color: #3f414e;
+  max-width: 1280px;
+  width: 100%;
+  color: #fbfbfb;
+}
+.top__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.top__hello,
+.top__contacts {
+  margin: 4.8rem;
+}
+.top__contacts {
+  margin-left: 0;
+  width: 90rem;
+}
+.top__photo {
+  line-height: 0;
+}
+.top__img {
+  width: 24rem;
+  min-height: 24rem;
+  height: 100%;
+  background-size: 100% auto;
+}
 .top h2 {
   margin: 1rem 0;
   font-size: 2.8rem;
@@ -135,7 +164,7 @@
 /*- @ desktop/top/.top.jn.css -*/
 /*- desktop/timeline/.timeline.jn.css @ -*/
 .timeline {
-  max-width: 1440px;
+  max-width: 1280px;
   width: 100%;
 }
 .timeline__part {
@@ -153,29 +182,29 @@
   display: flex;
   justify-content: flex-end;
   padding-right: 0;
-  border-right: 0.6rem solid #f17351;
+  border-right: 0.4rem solid #f17351;
 }
 .timeline__right {
   background-color: #3f414e;
   color: #dcdee0;
   padding-left: 0;
-  border-left: 0.6rem solid #fbfbfb;
+  border-left: 0.4rem solid #fbfbfb;
 }
 .timeline__position {
   font-weight: 600;
 }
 .timeline_first .timeline__left {
-  border-top: 0.6rem solid #fbfbfb;
+  border-top: 0.4rem solid #f17351;
 }
 .timeline_first .timeline__right {
-  border-top: 0.6rem solid #3f414e;
+  border-top: 0.4rem solid #fbfbfb;
 }
 .timeline_last .timeline__left {
-  border-bottom: 0.6rem solid #fbfbfb;
+  border-bottom: 0.4rem solid #f17351;
   padding-bottom: 4.8rem;
 }
 .timeline_last .timeline__right {
-  border-bottom: 0.6rem solid #3f414e;
+  border-bottom: 0.4rem solid #fbfbfb;
   padding-bottom: 4.8rem;
 }
 .timeline__desc,
@@ -217,12 +246,16 @@
  
 /*- @ desktop/timeline/.timeline.jn.css -*/
 /*- desktop/footer/.footer.jn.css @ -*/
-.footer .text {
-  margin-bottom: 2rem;
+.footer {
+  max-width: 1280px;
+  background-color: #3f414e;
+  color: #fbfbfb;
 }
-.footer .columns__left,
-.footer .columns__right {
-  padding-top: 0;
+.footer__content {
+  padding: 4.8rem;
+}
+.footer p {
+  margin-bottom: 2rem;
 }
  
 /*- @ desktop/footer/.footer.jn.css -*/
@@ -230,24 +263,24 @@
 html {
   font-size: 10px;
 }
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1200px) {
   html {
-    font-size: 7px;
+    font-size: 9px;
   }
 }
 @media screen and (max-width: 1024px) {
   html {
-    font-size: 6px;
+    font-size: 7px;
   }
 }
 @media screen and (max-width: 900px) {
   html {
-    font-size: 5px;
+    font-size: 6px;
   }
 }
 @media screen and (max-width: 700px) {
   html {
-    font-size: 4px;
+    font-size: 5px;
   }
 }
 body {

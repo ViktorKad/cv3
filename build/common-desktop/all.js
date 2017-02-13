@@ -438,17 +438,28 @@ jn.create('paranja',
  
 /*- @ desktop/tags/tags.jn.html -*/
 /*- desktop/top/top.jn.html @ -*/
- 
+
+jn.create('top__layout',
+'<div class="top">' +
+'    <div class="top__container">' +
+'        <div class="top__photo">' +
+'            <div class="top__img" style="background-image: url([% imgSrc %]);"></div>' +
+'        </div>' +
+'        <div class="top__hello">' +
+'            <h2>[% lang:head.hello %]</h2>' +
+'            <p>[% lang:head.desc %]</p>' +
+'        </div>' +
+'        <div class="top__contacts">' +
+'            [% contacts %]' +
+'        </div>' +
+'    </div>' +
+'</div>'); 
 /*- @ desktop/top/top.jn.html -*/
 /*- desktop/top/top.jn.js @ -*/
 jn.create('top', function () {
-    return jn.exec('columns', {
-        cls: 'top',
-        left: [
-            jn.exec('h', {text: '[% lang:head.hello %]'}),
-            jn.exec('p', {text: '[% lang:head.desc %]'})
-        ].join(''),
-        right: jn.exec('contacts')
+    return jn.exec('top__layout', {
+        imgSrc: './desktop/top/assets/top__photo.jpg',
+        contacts: jn.exec('contacts')
     });
 });
  
@@ -518,27 +529,21 @@ jn.create('history', function() {
  
 /*- @ desktop/history/history.jn.js -*/
 /*- desktop/footer/footer.jn.html @ -*/
- 
-/*- @ desktop/footer/footer.jn.html -*/
-/*- desktop/footer/footer.jn.js @ -*/
-jn.create('footer', function() {
 
-    return jn.exec('columns', {
-        cls: 'footer',
-        left: [
-            jn.exec('text', {text: '[% lang:footer.about.common %]'}),
-            jn.exec('text', {text: '[% lang:footer.about.bank %]'}),
-            jn.exec('text', {text: '[% lang:footer.about.yandex %]'})
-        ].join(''),
-        right: [
-            jn.exec('text', {text: '[% lang:footer.mobile %]'}),
-            jn.exec('text', {text: '[% lang:footer.github %]'}),
-            jn.exec('text', {text: '[% lang:footer.past_cv %]'})
-        ].join('')
-    });
-});
- 
-/*- @ desktop/footer/footer.jn.js -*/
+jn.create('footer',
+'<div class="footer">' +
+'    <div class="footer__content">' +
+'        <p>[% lang:techs.text1 %]</p>' +
+'        <p>[% lang:techs.text2 %]</p>' +
+'        <p>[% lang:footer.about.common %]</p>' +
+'        <p>[% lang:footer.about.bank %]</p>' +
+'        <p>[% lang:footer.about.yandex %]</p>' +
+'        <p>[% lang:footer.mobile %]</p>' +
+'        <p>[% lang:footer.github %]</p>' +
+'        <p>[% lang:footer.past_cv %]</p>' +
+'    </div>' +
+'</div>'); 
+/*- @ desktop/footer/footer.jn.html -*/
 /*- desktop/document/document.jn.html @ -*/
 
 jn.create('document',
@@ -556,7 +561,6 @@ jn.create('document',
 '    <div class="content">' +
 '        [% top %]' +
 '        [% history %]' +
-'        [% about-techs %]' +
 '        [% footer %]' +
 '    </div>' +
 '</body>' +
