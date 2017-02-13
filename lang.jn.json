@@ -132,6 +132,6 @@
         "ru": "Резюме собрано на базе шаблонизатора, код которого можно посмотреть в моем <a class=\"link\" href=\"https://github.com/ViktorKad\"> GitHub репозитории</a>"
     },
     "footer.past_cv": {
-        "ru": "А здесь доступна <a class=\"link\" href=\"https://viktorkad.github.io/cv/\">прошлая версия моего резюме</a>"
+        "ru": "А здесь доступна <a class=\"link\" href=\"https://viktorkad.github.io/cv/\">прошлая версия резюме</a>"
     }
 }
