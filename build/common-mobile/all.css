@@ -72,6 +72,10 @@
 .contacts {
   margin-top: 1.6rem;
 }
+.contacts__left,
+.contacts__right {
+  border-bottom: 0.2rem solid rgba(0,0,0,0.1);
+}
 .contacts :last-child .contacts__left,
 .contacts :last-child .contacts__right {
   border-bottom: none;
