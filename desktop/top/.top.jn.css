@@ -15,10 +15,10 @@
 }
 .top__contacts {
   margin-left: 0;
-  width: 90rem;
 }
 .top__photo {
   line-height: 0;
+  min-width: 24rem;
 }
 .top__img {
   width: 24rem;

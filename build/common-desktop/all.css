@@ -84,6 +84,12 @@
 }
  
 /*- @ desktop/about-techs/.about-techs.jn.css -*/
+/*- desktop/contacts/.contacts.jn.css @ -*/
+.contacts {
+  width: 40rem;
+}
+ 
+/*- @ desktop/contacts/.contacts.jn.css -*/
 /*- desktop/paranja/.paranja.jn.css @ -*/
 .paranja {
   z-index: 100;
@@ -145,10 +151,10 @@
 }
 .top__contacts {
   margin-left: 0;
-  width: 90rem;
 }
 .top__photo {
   line-height: 0;
+  min-width: 24rem;
 }
 .top__img {
   width: 24rem;
@@ -298,6 +304,11 @@ body {
   display: none;
   align-items: center;
   flex-direction: column;
+}
+.content__center {
+  position: absolute;
+  min-height: 100%;
+  background-color: #3f414e;
 }
 .js__support_yes.js__good_yes.flex__support_yes .content {
   display: flex;

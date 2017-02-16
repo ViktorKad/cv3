@@ -64,7 +64,7 @@
      */
     jn._execDataAndTmpls = function(tmplCode, data) {
         let result = tmplCode,
-            REPLACE_PATTERN = /\[%\s{1}[a-zA-Z_\-]+\s%\]/g,
+            REPLACE_PATTERN = /\[%\s{1}[a-zA-Z0-9_\-]+\s%\]/g,
             REPLACE_PATTERN_LANG = /\[%\s{1}[a-zA-Z_-]+:{1}[a-zA-Z0-9_\-\.]+\s%\]/g,
             tmpName, replacable, replacableLang, keyArr;
 
@@ -118,7 +118,7 @@
      */
     jn.execFrom = function(name, level, data) {
         var result = '',
-            REPLACE_PATTERN = /\[%\s{1}[a-zA-Z_-]+\s%\]/g,
+            REPLACE_PATTERN = /\[%\s{1}[a-zA-Z0-9_-]+\s%\]/g,
             tmpName, replacable;
         
         if (typeof jn._tmpls[name] === 'undefined') {
@@ -362,7 +362,7 @@ jn.create('p',
 '<p class="[% cls %]">' +
 '    [% text %]' +
 '</p>');
-jn.create('h',
+jn.create('h2',
 '<h2 class="[% cls %]">' +
 '    [% text %]' +
 '</h2>'); 
@@ -412,6 +412,9 @@ jn.create('about-techs', function() {
     });
 }); 
 /*- @ desktop/about-techs/about-techs.jn.js -*/
+/*- desktop/contacts/contacts.jn.html @ -*/
+ 
+/*- @ desktop/contacts/contacts.jn.html -*/
 /*- desktop/detector/detector.jn.html @ -*/
  
 /*- @ desktop/detector/detector.jn.html -*/
@@ -431,9 +434,6 @@ jn.create('paranja',
 '    </div>' +
 '</div>'); 
 /*- @ desktop/paranja/paranja.jn.html -*/
-/*- desktop/contacts/contacts.jn.html @ -*/
- 
-/*- @ desktop/contacts/contacts.jn.html -*/
 /*- desktop/tags/tags.jn.html @ -*/
  
 /*- @ desktop/tags/tags.jn.html -*/
@@ -559,9 +559,11 @@ jn.create('document',
 '<body>' +
 '    [% paranja %]' +
 '    <div class="content">' +
-'        [% top %]' +
-'        [% history %]' +
-'        [% footer %]' +
+'        <div class="content__center">' +
+'            [% top %]' +
+'            [% history %]' +
+'            [% footer %]' +
+'        </div>' +
 '    </div>' +
 '</body>' +
 '</html>'); 
