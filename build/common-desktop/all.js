@@ -208,25 +208,33 @@ jn.setLevel('common');
 
 jn.create('contacts__layout',
 '<div class="contacts">' +
-'    [% items %]' +
+'    <div class="contacts__left">' +
+'        [% keys %]' +
+'    </div>' +
+'    <div class="contacts__right">' +
+'        [% values %]' +
+'    </div>' +
 '</div>');
 jn.create('contacts__line',
 '<div class="contacts__line">' +
-'    <div class="contacts__left">[% key %]</div>' +
-'    <div class="contacts__right">[% value %]</div>' +
+'    [% text %]' +
 '</div>'); 
 /*- @ common/contacts/contacts.jn.html -*/
 /*- common/contacts/contacts.jn.js @ -*/
 jn.create('contacts', function () {
-    var items = ['email', 'links', 'city'].map(function(item) {
-        return jn.exec('contacts__line', {
-            key: '[% lang:contacts.' + item + '.key %]',
-            value: '[% lang:contacts.' + item + '.value %]'
-        });
-    });
+    var items = ['email', 'links', 'city'];
 
     return jn.exec('contacts__layout', {
-        items: items.join('')
+        keys: items.map(function(item) {
+            return jn.exec('contacts__line', {
+                text: '[% lang:contacts.' + item + '.key %]'
+            });
+        }).join(''),
+        values: items.map(function(item) {
+            return jn.exec('contacts__line', {
+                text: '[% lang:contacts.' + item + '.value %]'
+            });
+        }).join('')
     });
 });
  
@@ -441,17 +449,15 @@ jn.create('paranja',
 
 jn.create('top__layout',
 '<div class="top">' +
-'    <div class="top__container">' +
-'        <div class="top__photo">' +
-'            <div class="top__img" style="background-image: url([% imgSrc %]);"></div>' +
-'        </div>' +
-'        <div class="top__hello">' +
-'            <h2>[% lang:head.hello %]</h2>' +
-'            <p>[% lang:head.desc %]</p>' +
-'        </div>' +
-'        <div class="top__contacts">' +
-'            [% contacts %]' +
-'        </div>' +
+'    <div class="top__photo">' +
+'        <div class="top__img" style="background-image: url([% imgSrc %]);"></div>' +
+'    </div>' +
+'    <div class="top__hello">' +
+'        <h2>[% lang:head.hello %]</h2>' +
+'        <p>[% lang:head.desc %]</p>' +
+'    </div>' +
+'    <div class="top__contacts">' +
+'        [% contacts %]' +
 '    </div>' +
 '</div>'); 
 /*- @ desktop/top/top.jn.html -*/

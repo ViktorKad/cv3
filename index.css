@@ -1,17 +1,15 @@
 /*- common/contacts/.contacts.jn.css @ -*/
-.contacts__line {
+.contacts {
   display: flex;
-  align-content: stretch;
+  flex-direction: row;
+  width: 100%;
 }
-.contacts__left,
-.contacts__right {
-  display: inline-block;
-  flex: 1 1 50%;
+.contacts__line {
   border-bottom: 0.2rem solid rgba(255,255,255,0.1);
   padding: 0.8rem 0;
 }
-.contacts__left {
-  padding-right: 1rem;
+.contacts__left .contacts__line {
+  padding-right: 3rem;
 }
  
 /*- @ common/contacts/.contacts.jn.css -*/
@@ -135,26 +133,24 @@
 /*- @ desktop/paranja/.paranja.jn.css -*/
 /*- desktop/top/.top.jn.css @ -*/
 .top {
-  background-color: #3f414e;
-  max-width: 1280px;
-  width: 100%;
-  color: #fbfbfb;
-}
-.top__container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #3f414e;
+  max-width: 1280px;
+  color: #fbfbfb;
 }
-.top__hello,
-.top__contacts {
+.top__hello {
   margin: 4.8rem;
+  flex: 1 1 40%;
 }
 .top__contacts {
-  margin-left: 0;
+  margin: 4.8rem 0;
+  margin-right: 4.8rem;
 }
 .top__photo {
   line-height: 0;
-  min-width: 24rem;
+  width: 24rem;
 }
 .top__img {
   width: 24rem;
@@ -304,11 +300,6 @@ body {
   display: none;
   align-items: center;
   flex-direction: column;
-}
-.content__center {
-  position: absolute;
-  min-height: 100%;
-  background-color: #3f414e;
 }
 .js__support_yes.js__good_yes.flex__support_yes .content {
   display: flex;

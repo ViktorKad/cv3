@@ -1,14 +1,12 @@
-.contacts__line {
+.contacts {
   display: flex;
-  align-content: stretch;
+  flex-direction: row;
+  width: 100%;
 }
-.contacts__left,
-.contacts__right {
-  display: inline-block;
-  flex: 1 1 50%;
+.contacts__line {
   border-bottom: 0.2rem solid rgba(255,255,255,0.1);
   padding: 0.8rem 0;
 }
-.contacts__left {
-  padding-right: 1rem;
+.contacts__left .contacts__line {
+  padding-right: 3rem;
 }

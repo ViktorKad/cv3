@@ -37,11 +37,6 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.content__center {
-  position: absolute;
-  min-height: 100%;
-  background-color: #3f414e;
-}
 .js__support_yes.js__good_yes.flex__support_yes .content {
   display: flex;
 }

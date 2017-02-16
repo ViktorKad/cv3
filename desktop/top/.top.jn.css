@@ -1,24 +1,22 @@
 .top {
-  background-color: #3f414e;
-  max-width: 1280px;
-  width: 100%;
-  color: #fbfbfb;
-}
-.top__container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #3f414e;
+  max-width: 1280px;
+  color: #fbfbfb;
 }
-.top__hello,
-.top__contacts {
+.top__hello {
   margin: 4.8rem;
+  flex: 1 1 40%;
 }
 .top__contacts {
-  margin-left: 0;
+  margin: 4.8rem 0;
+  margin-right: 4.8rem;
 }
 .top__photo {
   line-height: 0;
-  min-width: 24rem;
+  width: 24rem;
 }
 .top__img {
   width: 24rem;
