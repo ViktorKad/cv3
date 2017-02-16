@@ -1,10 +1,14 @@
 <!--:contacts__layout:-->
 <div class="contacts">
-    [% items %]
+    <div class="contacts__left">
+        [% keys %]
+    </div>
+    <div class="contacts__right">
+        [% values %]
+    </div>
 </div>
 
 <!--:contacts__line:-->
 <div class="contacts__line">
-    <div class="contacts__left">[% key %]</div>
-    <div class="contacts__right">[% value %]</div>
+    [% text %]
 </div>
