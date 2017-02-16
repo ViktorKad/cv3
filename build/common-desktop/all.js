@@ -420,9 +420,6 @@ jn.create('about-techs', function() {
     });
 }); 
 /*- @ desktop/about-techs/about-techs.jn.js -*/
-/*- desktop/contacts/contacts.jn.html @ -*/
- 
-/*- @ desktop/contacts/contacts.jn.html -*/
 /*- desktop/detector/detector.jn.html @ -*/
  
 /*- @ desktop/detector/detector.jn.html -*/
@@ -442,6 +439,9 @@ jn.create('paranja',
 '    </div>' +
 '</div>'); 
 /*- @ desktop/paranja/paranja.jn.html -*/
+/*- desktop/contacts/contacts.jn.html @ -*/
+ 
+/*- @ desktop/contacts/contacts.jn.html -*/
 /*- desktop/tags/tags.jn.html @ -*/
  
 /*- @ desktop/tags/tags.jn.html -*/
