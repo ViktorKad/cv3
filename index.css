@@ -38,7 +38,6 @@
 /*- desktop/columns/.columns.jn.css @ -*/
 .columns {
   display: flex;
-  max-width: 1280px;
   width: 100%;
   color: #fbfbfb;
 }
@@ -131,11 +130,11 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: #3f414e;
-  max-width: 1280px;
   color: #fbfbfb;
 }
 .top__hello {
   margin: 4.8rem;
+  margin-bottom: 1rem;
   flex: 1 1 40%;
 }
 .top__contacts {
@@ -151,6 +150,7 @@
   min-height: 24rem;
   height: 100%;
   background-size: 100% auto;
+  background-repeat: no-repeat;
 }
 .top h2 {
   margin: 1rem 0;
@@ -158,9 +158,36 @@
 }
  
 /*- @ desktop/top/.top.jn.css -*/
+/*- desktop/menu/.menu.jn.css @ -*/
+.menu {
+  background-color: #3f414e;
+  color: #fbfbfb;
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  font-size: 20px;
+  line-height: 48px;
+  text-align: center;
+  padding-bottom: 2.4rem;
+}
+.menu__item {
+  flex-grow: 1;
+  border-top: 0.4rem solid #fbfbfb;
+  border-bottom: 0.4rem solid #fbfbfb;
+}
+.menu__item:hover {
+  cursor: pointer;
+  background-color: #494b58;
+}
+.menu__item_selected {
+  border-top: 0.4rem solid #f17351;
+  border-bottom: 0.4rem solid #f17351;
+  color: #f17351;
+}
+ 
+/*- @ desktop/menu/.menu.jn.css -*/
 /*- desktop/timeline/.timeline.jn.css @ -*/
 .timeline {
-  max-width: 1280px;
   width: 100%;
 }
 .timeline__part {
@@ -243,7 +270,6 @@
 /*- @ desktop/timeline/.timeline.jn.css -*/
 /*- desktop/footer/.footer.jn.css @ -*/
 .footer {
-  max-width: 1280px;
   background-color: #3f414e;
   color: #fbfbfb;
 }
@@ -274,26 +300,32 @@ html {
     font-size: 6px;
   }
 }
-@media screen and (max-width: 700px) {
-  html {
-    font-size: 5px;
-  }
-}
 body {
   font-family: Verdana, Geneva, Tahoma, Arial, sans-serif;
   background-color: rgba(0,0,0,0.1);
-  font-size: 2rem;
-  line-height: 2.8rem;
+  font-size: 18px;
+  line-height: 28px;
 }
 .content {
   position: absolute;
   top: 0;
   left: 0;
   min-height: 100%;
+  min-width: 800px;
   width: 100%;
   display: none;
   align-items: center;
   flex-direction: column;
+}
+.content__center {
+  max-width: 1280px;
+}
+.content:after {
+  content: '';
+  flex-grow: 1;
+  max-width: 1280px;
+  width: 100%;
+  background-color: #3f414e;
 }
 .js__support_yes.js__good_yes.flex__support_yes .content {
   display: flex;

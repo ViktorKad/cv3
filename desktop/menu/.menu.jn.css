@@ -1,0 +1,25 @@
+.menu {
+  background-color: #3f414e;
+  color: #fbfbfb;
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  font-size: 20px;
+  line-height: 48px;
+  text-align: center;
+  padding-bottom: 2.4rem;
+}
+.menu__item {
+  flex-grow: 1;
+  border-top: 0.4rem solid #fbfbfb;
+  border-bottom: 0.4rem solid #fbfbfb;
+}
+.menu__item:hover {
+  cursor: pointer;
+  background-color: #494b58;
+}
+.menu__item_selected {
+  border-top: 0.4rem solid #f17351;
+  border-bottom: 0.4rem solid #f17351;
+  color: #f17351;
+}

@@ -470,6 +470,28 @@ jn.create('top', function () {
 });
  
 /*- @ desktop/top/top.jn.js -*/
+/*- desktop/menu/menu.jn.html @ -*/
+
+jn.create('menu',
+'<div class="menu">' +
+'    <div class="menu__item">Опыт работы</div>' +
+'    <div class="menu__item menu__item_selected">Образование</div>' +
+'    <div class="menu__item">О проектах</div>' +
+'    <div class="menu__item">Обо мне</div>' +
+'</div>'); 
+/*- @ desktop/menu/menu.jn.html -*/
+/*- desktop/menu/menu.js @ -*/
+// (function() {
+//     var oldOnload = window.onload;
+//     window.onload = function() {
+//         if (oldOnload) {
+//             oldOnload();
+//         }
+
+
+//     };
+// })(); 
+/*- @ desktop/menu/menu.js -*/
 /*- desktop/timeline/timeline.jn.html @ -*/
 
 jn.create('timeline',
@@ -567,6 +589,7 @@ jn.create('document',
 '    <div class="content">' +
 '        <div class="content__center">' +
 '            [% top %]' +
+'            <!--[% menu %]-->' +
 '            [% history %]' +
 '            [% footer %]' +
 '        </div>' +
