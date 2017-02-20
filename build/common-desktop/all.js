@@ -581,14 +581,17 @@ jn.create('menu',
 
         try {
             lsValue = localStorage.getItem(LS_KEY);
-            home.setMod(body, 'body', 'page', lsValue);
-            menuItems.forEach(function(item) {
-                home.setMod(item, 'menu__item', 'selected', 'no');
 
-                if (home.attr(item, 'data-menu') === lsValue) {
-                    home.setMod(item, 'menu__item', 'selected', 'yes');
-                }
-            });
+            if (lsValue) {
+                home.setMod(body, 'body', 'page', lsValue);
+                menuItems.forEach(function(item) {
+                    home.setMod(item, 'menu__item', 'selected', 'no');
+
+                    if (home.attr(item, 'data-menu') === lsValue) {
+                        home.setMod(item, 'menu__item', 'selected', 'yes');
+                    }
+                });
+            }
         } catch (e) {/*pass*/}
 
         menuItems.forEach(function(item) {
