@@ -1,12 +1,15 @@
 jn.create('about-techs', function() {
+    var content = [];
+    for (var i = 0; i < 5; i++) {
+        content.push(
+            jn.exec('about-techs__line', {
+                name: '[% lang:techs.' + i + '.name %]',
+                desc: '[% lang:techs.' + i + '.desc %]'
+            })
+        );
+    }
 
-    return jn.exec('columns', {
-        cls: 'about-techs',
-        left: jn.exec('box', {
-            content: '[% lang:techs.text1 %]'
-        }),
-        right: jn.exec('text', {
-            text: '[% lang:techs.text2 %]'
-        })
+    return jn.exec('about-techs__layout', {
+        lines: content.join('')
     });
 });
