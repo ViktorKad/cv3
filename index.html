@@ -26,9 +26,12 @@
 })();
 
 (function() {
+    var arr = ['filter', 'forEach', 'map', 'reduce', 'some', 'from'];
     // Проверка поддержки нужных js функций
-    if (!Array.prototype.filter) {
-        return;
+    for (var i = 0; i < arr.length; i++) {
+        if (!(Array.prototype[arr[i]] || Array[arr[i]])) {
+            return;
+        }
     }
 
     window.isGoodJsSupport = true;
@@ -36,8 +39,6 @@
 
 (function() {
     var html = document.getElementsByTagName('html')[0];
-
-    setMod(html, 'js', 'support', 'yes');
 
     if (window.isFlexboxOn) {
         setMod(html, 'flex', 'support', 'yes');
@@ -116,15 +117,74 @@ table {
 }
 </style>
     <link rel="stylesheet" href="./index.css">
+    <script type="text/javascript">
+(function() {
+    'use strict';
+    if (typeof window.home !== 'object') {
+        window.home = Object.create(null);
+    }
+
+    home.attr = function(elem, name, value) {
+        if (typeof value === 'undefined') {
+            return elem.getAttribute(name);
+        }
+
+        elem.setAttribute(name, value);
+
+        return elem;
+    }
+    
+    window.home.setMod = function(elem, cls, mod, value) {
+        var SPLITTER_VAL = '_',
+            SPLITTER_CLS = '__',
+            isModExist = false;
+
+        elem.className = elem.className.trim().split(' ').map(function(item) {
+            if (!item) {
+                return;
+            }
+
+            var itemSplitCls = item.split(SPLITTER_CLS);
+
+            if (!itemSplitCls[1]) {
+                return;
+            }
+
+            var itemSplitMod = itemSplitCls[1].split(SPLITTER_VAL),
+                modName = itemSplitMod[1],
+                clsName = itemSplitCls[0] + SPLITTER_CLS + itemSplitMod[0];
+            
+            if (clsName !== cls) {
+                return item;
+            }
+            
+            if (itemSplitMod.length === 2) {
+                isModExist = true;
+                return clsName + SPLITTER_VAL + value;
+            }
+
+            if (modName === mod) {
+                isModExist = true;
+                return clsName + SPLITTER_VAL + mod + SPLITTER_VAL + value;
+            }
+
+            return item;
+        }).join(' ');
+
+        if (!isModExist) {
+            elem.className += ' ' + cls + SPLITTER_VAL + mod + SPLITTER_VAL + value;
+        }
+    }
+})();
+</script>
+    <script type="text/javascript" src="./desktop/menu/menu.js"></script>
 </head>
-<body>
+<body class="body_page_work-list">
     <div class="paranja">
     <div class="paranja__bg"></div>
     <div class="paranja__content">
-        <p>Привет. Твой браузер не поддерживает современную спецификацию flexbox или в браузере отключен JavaScript.</p>
-        <p>
-            Предыдущую версию резюме можно посмотреть здесь - <a class="link" href="#">#</a>
-        </p>
+        <p>Привет. Твой браузер не поддерживает современную спецификацию flexbox или часть необходимых JavaScript методов.</p>
+        <p>Предыдущую версию резюме можно посмотреть <a class="link" href="https://viktorkad.github.io/cv/">здесь</a></p>
     </div>
 </div>
     <div class="content">
@@ -160,13 +220,14 @@ table {
 </div>
     </div>
 </div>
-            <!--<div class="menu">
-    <div class="menu__item">Опыт работы</div>
-    <div class="menu__item menu__item_selected">Образование</div>
-    <div class="menu__item">О проектах</div>
-    <div class="menu__item">Обо мне</div>
-</div>-->
-            <div class="timeline timeline_first">
+            <div class="menu">
+    <div class="menu__item menu__item_selected_yes" data-menu="work-list">Опыт работы</div>
+    <div class="menu__item" data-menu="edu-list">Образование</div>
+    <div class="menu__item" data-menu="about-techs">Про технологии</div>
+    <div class="menu__item" data-menu="about-me">Обо мне</div>
+</div>
+            <div class="work-list">
+    <div class="timeline timeline_first">
     <div class="timeline__part">
         <div class="timeline__left">
             <div class="timeline__date">с 2015 года</div>
@@ -192,7 +253,7 @@ table {
             <div class="timeline__date">2012 - 2014</div>
         </div>
     </div>
-</div><div class="timeline ">
+</div><div class="timeline timeline_last">
     <div class="timeline__part">
         <div class="timeline__left">
             <div class="timeline__date">2011 - 2012</div>
@@ -205,53 +266,103 @@ table {
 </div>
         </div>
     </div>
-</div><div class="timeline ">
+</div><div class="footer">
+    <div class="footer__content">
+        Сейчас работаю в компании Яндекс и помогаю создавать главную страницу. В работе аккуратен. Придерживаюсь мнения, прежде чем не соглашаться с коллегой, нужно попытаться понять его точку зрения.
+    </div>
+</div>
+</div>
+            <div class="edu-list">
+    <div class="timeline timeline_first">
     <div class="timeline__part">
         <div class="timeline__left">
+            <div class="timeline__date">2013 - 2015</div>
+        </div>
+        <div class="timeline__right">
             <div class="timeline__desc">
     <div class="timeline__label">Санкт-Петербургский Государственный Университет</div>
     <div class="timeline__position">Математико-механический факультет</div>
     <div>Математическое обеспечение и администрирование информационных систем</div>
 </div>
         </div>
-        <div class="timeline__right">
-            <div class="timeline__date">2013 - 2015</div>
-        </div>
     </div>
 </div><div class="timeline ">
     <div class="timeline__part">
         <div class="timeline__left">
-            <div class="timeline__date">2012 - 2012</div>
-        </div>
-        <div class="timeline__right">
             <div class="timeline__desc">
     <div class="timeline__label">Санкт-Петербургский Государственный Политехнический Университет</div>
     <div class="timeline__position">Разработка динамических web-приложений с применением Php и MySQL, технологии AJAX</div>
     <div>Курсы переподготовки специалистов</div>
 </div>
         </div>
+        <div class="timeline__right">
+            <div class="timeline__date">2012 - 2012</div>
+        </div>
     </div>
 </div><div class="timeline timeline_last">
     <div class="timeline__part">
         <div class="timeline__left">
+            <div class="timeline__date">2013 - 2015</div>
+        </div>
+        <div class="timeline__right">
             <div class="timeline__desc">
     <div class="timeline__label">Санкт-Петербургский государственный лесотехнический университет им. С.М. Кирова</div>
     <div class="timeline__position">Кафедра лесной таксации и лесоустройства</div>
     <div>Применение беспилотных летательных аппаратов для лесного планирования</div>
 </div>
         </div>
-        <div class="timeline__right">
-            <div class="timeline__date">2013 - 2015</div>
-        </div>
+    </div>
+</div><div class="footer">
+    <div class="footer__content">
+        Считаю, что учиться никогда не поздно и всегда готов узнавать новое. Переодически прохожу онлайн курсы, например на stepic.com и смотрю видео с конференций. Узнав об интересных технологиях стараюсь попробовать их в домашних условиях.
     </div>
 </div>
-            <div class="footer">
-    <div class="footer__content">
-        <p>В настоящее время повседневно использую: JavaScript, Bem, Stylus, jQuery, Git.</p>
-        <p>Использовал, изучал или изучаю сейчас: Android, Python, Java, Php, SQL, C/C++, Bash, TypeScript, LESS.</p>
-        <p>В каждом из проектов, в которых я участвовал, было довольно много интересных задач.</p>
-        <p>В банке многое было связано с разработкой анкет, форм, шлюзов, работой с КЛАДРом.</p>
-        <p>В Яндексе были как задачи на поддержку большой существующей кодовой базы, так и множество задач на создание новых блоков. А так как главная страница Яндекса должна работать корректно на максимальном количестве устройств, в которые помимо экзотических десктопных браузеров входят телевизоры, телефоны и планшеты (включая очень старые модели), то находились самые разнообразные задачи на верстку.</p>
+</div>
+            <div class="about-techs">
+    <div class="about-techs__line">
+    <div class="about-techs__left">
+        JavaScript/NodeJs (ES5), CSS/Stylus, Bem, jQuery, Git
+    </div>
+    <div class="about-techs__right">
+        Стек технологий с которым работаю в настоящее время. Верстка и клиентский код под все что имеет экран. Особенно можно отметить телевизоры (Orsay, WebOs, Tizen, NetCast), uc-браузер на мобильных устройствах, оперу мини в режиме экстремального сжатия.
+    </div>
+</div><div class="about-techs__line">
+    <div class="about-techs__left">
+        JavaScript, jQuery, Bootstrap, Php, Apache, SQL, Python, Qooxdoo
+    </div>
+    <div class="about-techs__right">
+        Стек технологий с предыдущего места работы (банк). Full-stack разработка внутренних сервисов и взаимодействие с командой разработки на PL/SQL.
+    </div>
+</div><div class="about-techs__line">
+    <div class="about-techs__left">
+        JavaScript (ES6), TypeScript, AngularJs, ReactJs
+    </div>
+    <div class="about-techs__right">
+        ES6/ES7 - стараюсь быть в курсе современных тенденций и пробовал для домашних проектов. ReactJs, AngularJs - промышленного опыта не имею, для себя смотрел, разбирался. Придерживаюсь позиции, что важнее знать язык, чем фрэймворки, т.к. со знанием языка можно довольно быстро освоить любой из фрэймворков.
+    </div>
+</div><div class="about-techs__line">
+    <div class="about-techs__left">
+        Java
+    </div>
+    <div class="about-techs__right">
+        Начинал изучение еще до появления Java 8. Изучал тогда еще актуальную J2EE. Немного смотрел на возможности Java 8. Сейчас для домашних проектов изучаю разработку под Android.
+    </div>
+</div><div class="about-techs__line">
+    <div class="about-techs__left">
+        C/C++, Bash и другое
+    </div>
+    <div class="about-techs__right">
+        Большинство технологий напрямую не связанных с web-разработкой изучал уже в сознательном возрасте, а не только для курсовых. Многое не приходилось использовать в рабочих проектах, но иногда знания из смежных областей очень помогают в работе.
+    </div>
+</div>
+</div>
+            <div class="about-me">
+    <div class="about-me__content">
+        <p>Начал заниматься программированием для web в университете, вместе с товарищем, в качестве хобби. После университета начал работать в агентстве недвижимости и там получилось более тесно связать свою жизнь с разработкой ПО. Параллельно с этим закончил курсы в Политехническом. Далее перешел работать в банк, где параллельно с работой учился в СПбГУ. В 2015 году был принят на работу в компанию Яндекс, где и работаю по настоящее время.</p>
+        <p>В каждом из проектов, в которых я участвовал, было довольно много интересных задач. </p>
+        <p>В банке это были формы (анкеты)  на 200 и более полей. В формах связанные поля, наличие одних зависит от заполнения других. Часть полей нужно переиспользовать в других анкетах. Соответственно поля являлись отдельными сущностями, которые могут общаться сообщениями с другими полями или элементами страницы.</p>
+        <p>В Яндексе часто работаю с tv версией главной. Был одним из разработчиков планшетной версии. Разработка информеров под все виды главной для различных мероприятий - выборы, олимпиада, футбольные, хоккейные и теннисные турниры. Разработка предупреждающих и рекламных блоков (попапы, полоски). Участие в разработке новых тем, обложек, спецпроектов. Очень много работы с чистым JavaScript, т.к. чаще всего важна скорость работы на клиенте.</p>
+        <div class="about-me__splitter"></div>
         <p>У моего резюме так же есть <a class="link" href="https://viktorkad.github.io/cv3/m.index.html">мобильная версия</a></p>
         <p>Резюме собрано на базе шаблонизатора, код которого можно посмотреть в моем <a class="link" href="https://github.com/ViktorKad"> GitHub репозитории</a></p>
         <p>А здесь доступна <a class="link" href="https://viktorkad.github.io/cv/">прошлая версия резюме</a></p>

@@ -26,9 +26,12 @@
 })();
 
 (function() {
+    var arr = ['filter', 'forEach', 'map', 'reduce', 'some', 'from'];
     // Проверка поддержки нужных js функций
-    if (!Array.prototype.filter) {
-        return;
+    for (var i = 0; i < arr.length; i++) {
+        if (!(Array.prototype[arr[i]] || Array[arr[i]])) {
+            return;
+        }
     }
 
     window.isGoodJsSupport = true;
@@ -36,8 +39,6 @@
 
 (function() {
     var html = document.getElementsByTagName('html')[0];
-
-    setMod(html, 'js', 'support', 'yes');
 
     if (window.isFlexboxOn) {
         setMod(html, 'flex', 'support', 'yes');
@@ -119,8 +120,8 @@ table {
 </head>
 <body>
     <div class="paranja">
-    Привет. Твой браузер не поддерживает современную спецификацию flexbox или в браузере отключен JavaScript.
-    Предыдущую версию резюме можно посмотреть здесь - <a class="link" href="#">#</a>
+    Привет. Твой браузер не поддерживает современную спецификацию flexbox или часть необходимых JavaScript методов.
+    Предыдущую версию резюме можно посмотреть <a class="link" href="https://viktorkad.github.io/cv/">здесь</a>
 </div>
     <div class="content">
         <div class="block block_title_off top">
@@ -243,33 +244,57 @@ table {
 </div>
     </div>
 </div>
-        <div class="block block_title_off footer">
+        <div class="block footer block_title_left">
     <div class="block__title">
-        
+        Про технологии
     </div>
     <div class="block__content">
         <div class="footer__item">
-    В настоящее время повседневно использую: JavaScript, Bem, Stylus, jQuery, Git.
+    <div class="footer__tech">
+    <div class="footer__tech-name">JavaScript/NodeJs (ES5), CSS/Stylus, Bem, jQuery, Git</div>
+    <div class="footer__tech-desc">Стек технологий с которым работаю в настоящее время. Верстка и клиентский код под все что имеет экран. Особенно можно отметить телевизоры (Orsay, WebOs, Tizen, NetCast), uc-браузер на мобильных устройствах, оперу мини в режиме экстремального сжатия.</div>
 </div>
-<div class="footer__item">
-    Использовал, изучал или изучаю сейчас: Android, Python, Java, Php, SQL, C/C++, Bash, TypeScript, LESS.
+</div><div class="footer__item">
+    <div class="footer__tech">
+    <div class="footer__tech-name">JavaScript, jQuery, Bootstrap, Php, Apache, SQL, Python, Qooxdoo</div>
+    <div class="footer__tech-desc">Стек технологий с предыдущего места работы (банк). Full-stack разработка внутренних сервисов и взаимодействие с командой разработки на PL/SQL.</div>
 </div>
-<div class="footer__item">
-    В каждом из проектов, в которых я участвовал, было довольно много интересных задач.
+</div><div class="footer__item">
+    <div class="footer__tech">
+    <div class="footer__tech-name">JavaScript (ES6), TypeScript, AngularJs, ReactJs</div>
+    <div class="footer__tech-desc">ES6/ES7 - стараюсь быть в курсе современных тенденций и пробовал для домашних проектов. ReactJs, AngularJs - промышленного опыта не имею, для себя смотрел, разбирался. Придерживаюсь позиции, что важнее знать язык, чем фрэймворки, т.к. со знанием языка можно довольно быстро освоить любой из фрэймворков.</div>
 </div>
-<div class="footer__item">
-    В банке многое было связано с разработкой анкет, форм, шлюзов, работой с КЛАДРом.
+</div><div class="footer__item">
+    <div class="footer__tech">
+    <div class="footer__tech-name">Java</div>
+    <div class="footer__tech-desc">Начинал изучение еще до появления Java 8. Изучал тогда еще актуальную J2EE. Немного смотрел на возможности Java 8. Сейчас для домашних проектов изучаю разработку под Android.</div>
 </div>
-<div class="footer__item">
-    В Яндексе были как задачи на поддержку большой существующей кодовой базы, так и множество задач на создание новых блоков. А так как главная страница Яндекса должна работать корректно на максимальном количестве устройств, в которые помимо экзотических десктопных браузеров входят телевизоры, телефоны и планшеты (включая очень старые модели), то находились самые разнообразные задачи на верстку.
+</div><div class="footer__item">
+    <div class="footer__tech">
+    <div class="footer__tech-name">C/C++, Bash и другое</div>
+    <div class="footer__tech-desc">Большинство технологий напрямую не связанных с web-разработкой изучал уже в сознательном возрасте, а не только для курсовых. Многое не приходилось использовать в рабочих проектах, но иногда знания из смежных областей очень помогают в работе.</div>
+</div>
 </div>
     </div>
-</div><div class="block block_theme_dark block_title_off footer footer_last">
+</div><div class="block block_theme_dark footer footer_last">
     <div class="block__title">
-        
+        Обо мне
     </div>
     <div class="block__content">
         <div class="footer__item">
+    Начал заниматься программированием для web в университете, вместе с товарищем, в качестве хобби. После университета начал работать в агентстве недвижимости и там получилось более тесно связать свою жизнь с разработкой ПО. Параллельно с этим закончил курсы в Политехническом. Далее перешел работать в банк, где параллельно с работой учился в СПбГУ. В 2015 году был принят на работу в компанию Яндекс, где и работаю по настоящее время.
+</div>
+<div class="footer__item">
+    В каждом из проектов, в которых я участвовал, было довольно много интересных задач. 
+</div>
+<div class="footer__item">
+    В банке это были формы (анкеты)  на 200 и более полей. В формах связанные поля, наличие одних зависит от заполнения других. Часть полей нужно переиспользовать в других анкетах. Соответственно поля являлись отдельными сущностями, которые могут общаться сообщениями с другими полями или элементами страницы.
+</div>
+<div class="footer__item">
+    В Яндексе часто работаю с tv версией главной. Был одним из разработчиков планшетной версии. Разработка информеров под все виды главной для различных мероприятий - выборы, олимпиада, футбольные, хоккейные и теннисные турниры. Разработка предупреждающих и рекламных блоков (попапы, полоски). Участие в разработке новых тем, обложек, спецпроектов. Очень много работы с чистым JavaScript, т.к. чаще всего важна скорость работы на клиенте.
+</div>
+<div class="footer__splitter"></div>
+<div class="footer__item">
     <a class="link" href="https://viktorkad.github.io/cv3/">Перейти на полную версию</a>
 </div>
 <div class="footer__item">

@@ -1,0 +1,19 @@
+.about-me {
+  display: none;
+  background-color: #3f414e;
+  color: #fbfbfb;
+}
+.body_page_about-me .about-me {
+  display: block;
+}
+.about-me__content {
+  padding-bottom: 2.8rem;
+}
+.about-me p {
+  margin-bottom: 2rem;
+  padding: 0 4.8rem;
+}
+.about-me__splitter {
+  border-bottom: 1px solid #f17351;
+  margin-bottom: 2rem;
+}

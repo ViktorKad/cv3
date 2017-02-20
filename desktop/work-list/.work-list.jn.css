@@ -1,0 +1,6 @@
+.work-list {
+  display: none;
+}
+.body_page_work-list .work-list {
+  display: block;
+}

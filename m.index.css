@@ -64,6 +64,9 @@
 .block_title_off .block__title {
   display: none;
 }
+.block_title_left .block__title {
+  text-align: start;
+}
  
 /*- @ mobile/block/.block.jn.css -*/
 /*- mobile/contacts/.contacts.jn.css @ -*/
@@ -151,6 +154,13 @@
 }
 .footer_last {
   padding-bottom: 2rem;
+}
+.footer__tech-name {
+  color: #f17351;
+}
+.footer__splitter {
+  border-top: 1px solid #f17351;
+  margin-top: 2rem;
 }
  
 /*- @ mobile/footer/.footer.jn.css -*/

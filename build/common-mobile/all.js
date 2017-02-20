@@ -265,9 +265,12 @@ jn.create('inline__js-detector',
 '})();' +
 '' +
 '(function() {' +
+'    var arr = [\'filter\', \'forEach\', \'map\', \'reduce\', \'some\', \'from\'];' +
 '    // Проверка поддержки нужных js функций' +
-'    if (!Array.prototype.filter) {' +
-'        return;' +
+'    for (var i = 0; i < arr.length; i++) {' +
+'        if (!(Array.prototype[arr[i]] || Array[arr[i]])) {' +
+'            return;' +
+'        }' +
 '    }' +
 '' +
 '    window.isGoodJsSupport = true;' +
@@ -275,8 +278,6 @@ jn.create('inline__js-detector',
 '' +
 '(function() {' +
 '    var html = document.getElementsByTagName(\'html\')[0];' +
-'' +
-'    setMod(html, \'js\', \'support\', \'yes\');' +
 '' +
 '    if (window.isFlexboxOn) {' +
 '        setMod(html, \'flex\', \'support\', \'yes\');' +
@@ -354,7 +355,68 @@ jn.create('inline__css-reset',
 '    border-collapse: collapse;' +
 '    border-spacing: 0;' +
 '}' +
-'</style>'); 
+'</style>');
+jn.create('inline__js-lib',
+'<script type="text/javascript">' +
+'(function() {' +
+'    \'use strict\';' +
+'    if (typeof window.home !== \'object\') {' +
+'        window.home = Object.create(null);' +
+'    }' +
+'' +
+'    home.attr = function(elem, name, value) {' +
+'        if (typeof value === \'undefined\') {' +
+'            return elem.getAttribute(name);' +
+'        }' +
+'' +
+'        elem.setAttribute(name, value);' +
+'' +
+'        return elem;' +
+'    }' +
+'    ' +
+'    window.home.setMod = function(elem, cls, mod, value) {' +
+'        var SPLITTER_VAL = \'_\',' +
+'            SPLITTER_CLS = \'__\',' +
+'            isModExist = false;' +
+'' +
+'        elem.className = elem.className.trim().split(\' \').map(function(item) {' +
+'            if (!item) {' +
+'                return;' +
+'            }' +
+'' +
+'            var itemSplitCls = item.split(SPLITTER_CLS);' +
+'' +
+'            if (!itemSplitCls[1]) {' +
+'                return;' +
+'            }' +
+'' +
+'            var itemSplitMod = itemSplitCls[1].split(SPLITTER_VAL),' +
+'                modName = itemSplitMod[1],' +
+'                clsName = itemSplitCls[0] + SPLITTER_CLS + itemSplitMod[0];' +
+'            ' +
+'            if (clsName !== cls) {' +
+'                return item;' +
+'            }' +
+'            ' +
+'            if (itemSplitMod.length === 2) {' +
+'                isModExist = true;' +
+'                return clsName + SPLITTER_VAL + value;' +
+'            }' +
+'' +
+'            if (modName === mod) {' +
+'                isModExist = true;' +
+'                return clsName + SPLITTER_VAL + mod + SPLITTER_VAL + value;' +
+'            }' +
+'' +
+'            return item;' +
+'        }).join(\' \');' +
+'' +
+'        if (!isModExist) {' +
+'            elem.className += \' \' + cls + SPLITTER_VAL + mod + SPLITTER_VAL + value;' +
+'        }' +
+'    }' +
+'})();' +
+'</script>'); 
 /*- @ common/inline/inline.jn.html -*/
 /*- common/tags/tags.jn.html @ -*/
 
@@ -397,7 +459,7 @@ jn.create('block',
 jn.create('paranja',
 '<div class="paranja">' +
 '    [% lang:paranja.hello %]' +
-'    [% lang:paranja.prev_version %] - <a class="link" href="#">#</a>' +
+'    [% lang:paranja.prev_version %]' +
 '</div>'); 
 /*- @ mobile/paranja/paranja.jn.html -*/
 /*- mobile/top/top.jn.html @ -*/
@@ -437,24 +499,29 @@ jn.create('history__title',
 /*- mobile/history/history.jn.js @ -*/
 jn.create('history', function() {
     var result = [],
+        prefix = 'work',
         TOTAL_COUNT = 6;
 
     for (var i = 0; i < TOTAL_COUNT; i++) {
+        if (i > 2) {
+            prefix = 'edu';
+        }
+
         result.push(
             jn.exec('block', {
                 cls: (i % 2 ? 'history block_theme_dark history_right' : 'history block_theme_dark'),
                 title: jn.exec('history__title', {
-                    text: '[% lang:history.' + i + '.date %]'
+                    text: '[% lang:' + prefix + '.' + (i > 2 ? i - 3 : i) + '.date %]'
                 }),
                 content: [
                     jn.exec('history__label', {
-                        text: '[% lang:history.' + i + '.label %]'
+                        text: '[% lang:' + prefix + '.' + (i > 2 ? i - 3 : i) + '.label %]'
                     }),
                     jn.exec('history__position', {
-                        text: '[% lang:history.' + i + '.position %]'
+                        text: '[% lang:' + prefix + '.' + (i > 2 ? i - 3 : i) + '.position %]'
                     }),
                     jn.exec('history__desc', {
-                        text: '[% lang:history.' + i + '.desc %]'
+                        text: '[% lang:' + prefix + '.' + (i > 2 ? i - 3 : i) + '.desc %]'
                     })
                 ].join('')
             })
@@ -467,23 +534,29 @@ jn.create('history', function() {
 /*- @ mobile/history/history.jn.js -*/
 /*- mobile/footer/footer.jn.html @ -*/
 
-jn.create('footer__content',
+jn.create('footer__item',
 '<div class="footer__item">' +
-'    [% lang:techs.text1 %]' +
-'</div>' +
-'<div class="footer__item">' +
-'    [% lang:techs.text2 %]' +
-'</div>' +
-'<div class="footer__item">' +
-'    [% lang:footer.about.common %]' +
-'</div>' +
-'<div class="footer__item">' +
-'    [% lang:footer.about.bank %]' +
-'</div>' +
-'<div class="footer__item">' +
-'    [% lang:footer.about.yandex %]' +
+'    [% content %]' +
 '</div>');
-jn.create('footer__links',
+jn.create('footer__tech',
+'<div class="footer__tech">' +
+'    <div class="footer__tech-name">[% name %]</div>' +
+'    <div class="footer__tech-desc">[% desc %]</div>' +
+'</div>');
+jn.create('footer__about-me',
+'<div class="footer__item">' +
+'    [% lang:about_me.text1 %]' +
+'</div>' +
+'<div class="footer__item">' +
+'    [% lang:about_me.text2 %]' +
+'</div>' +
+'<div class="footer__item">' +
+'    [% lang:about_me.text3 %]' +
+'</div>' +
+'<div class="footer__item">' +
+'    [% lang:about_me.text4 %]' +
+'</div>' +
+'<div class="footer__splitter"></div>' +
 '<div class="footer__item">' +
 '    [% lang:footer.desktop %]' +
 '</div>' +
@@ -496,16 +569,32 @@ jn.create('footer__links',
 /*- @ mobile/footer/footer.jn.html -*/
 /*- mobile/footer/footer.jn.js @ -*/
 jn.create('footer', function() {
+    var aboutMe = [];
+
+    for (var i = 0; i < 5; i++) {
+        aboutMe.push(
+            jn.exec('footer__item', {
+                content: jn.exec('footer__tech', {
+                    name: '[% lang:techs.' + i + '.name %]',
+                    desc: '[% lang:techs.' + i + '.desc %]'
+                })
+            })
+        );
+        
+    }
+
     return [
         jn.exec('block', {
-            cls: 'block_title_off footer',
-            content: jn.exec('footer__content')
+            cls: 'footer block_title_left',
+            title: '[% lang:menu.about_techs %]',
+            content: aboutMe.join('')
         }),
         jn.exec('block', {
-            cls: 'block_theme_dark block_title_off footer footer_last',
-            content: jn.exec('footer__links')
+            cls: 'block_theme_dark footer footer_last',
+            title: '[% lang:menu.about_me %]',
+            content: jn.exec('footer__about-me')
         })
-    ].join('')
+    ].join('');
 }); 
 /*- @ mobile/footer/footer.jn.js -*/
 /*- mobile/document/document.jn.html @ -*/

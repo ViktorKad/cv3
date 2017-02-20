@@ -1,0 +1,6 @@
+.edu-list {
+  display: none;
+}
+.body_page_edu-list .edu-list {
+  display: block;
+}

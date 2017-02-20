@@ -265,9 +265,12 @@ jn.create('inline__js-detector',
 '})();' +
 '' +
 '(function() {' +
+'    var arr = [\'filter\', \'forEach\', \'map\', \'reduce\', \'some\', \'from\'];' +
 '    // Проверка поддержки нужных js функций' +
-'    if (!Array.prototype.filter) {' +
-'        return;' +
+'    for (var i = 0; i < arr.length; i++) {' +
+'        if (!(Array.prototype[arr[i]] || Array[arr[i]])) {' +
+'            return;' +
+'        }' +
 '    }' +
 '' +
 '    window.isGoodJsSupport = true;' +
@@ -275,8 +278,6 @@ jn.create('inline__js-detector',
 '' +
 '(function() {' +
 '    var html = document.getElementsByTagName(\'html\')[0];' +
-'' +
-'    setMod(html, \'js\', \'support\', \'yes\');' +
 '' +
 '    if (window.isFlexboxOn) {' +
 '        setMod(html, \'flex\', \'support\', \'yes\');' +
@@ -354,7 +355,68 @@ jn.create('inline__css-reset',
 '    border-collapse: collapse;' +
 '    border-spacing: 0;' +
 '}' +
-'</style>'); 
+'</style>');
+jn.create('inline__js-lib',
+'<script type="text/javascript">' +
+'(function() {' +
+'    \'use strict\';' +
+'    if (typeof window.home !== \'object\') {' +
+'        window.home = Object.create(null);' +
+'    }' +
+'' +
+'    home.attr = function(elem, name, value) {' +
+'        if (typeof value === \'undefined\') {' +
+'            return elem.getAttribute(name);' +
+'        }' +
+'' +
+'        elem.setAttribute(name, value);' +
+'' +
+'        return elem;' +
+'    }' +
+'    ' +
+'    window.home.setMod = function(elem, cls, mod, value) {' +
+'        var SPLITTER_VAL = \'_\',' +
+'            SPLITTER_CLS = \'__\',' +
+'            isModExist = false;' +
+'' +
+'        elem.className = elem.className.trim().split(\' \').map(function(item) {' +
+'            if (!item) {' +
+'                return;' +
+'            }' +
+'' +
+'            var itemSplitCls = item.split(SPLITTER_CLS);' +
+'' +
+'            if (!itemSplitCls[1]) {' +
+'                return;' +
+'            }' +
+'' +
+'            var itemSplitMod = itemSplitCls[1].split(SPLITTER_VAL),' +
+'                modName = itemSplitMod[1],' +
+'                clsName = itemSplitCls[0] + SPLITTER_CLS + itemSplitMod[0];' +
+'            ' +
+'            if (clsName !== cls) {' +
+'                return item;' +
+'            }' +
+'            ' +
+'            if (itemSplitMod.length === 2) {' +
+'                isModExist = true;' +
+'                return clsName + SPLITTER_VAL + value;' +
+'            }' +
+'' +
+'            if (modName === mod) {' +
+'                isModExist = true;' +
+'                return clsName + SPLITTER_VAL + mod + SPLITTER_VAL + value;' +
+'            }' +
+'' +
+'            return item;' +
+'        }).join(\' \');' +
+'' +
+'        if (!isModExist) {' +
+'            elem.className += \' \' + cls + SPLITTER_VAL + mod + SPLITTER_VAL + value;' +
+'        }' +
+'    }' +
+'})();' +
+'</script>'); 
 /*- @ common/inline/inline.jn.html -*/
 /*- common/tags/tags.jn.html @ -*/
 
@@ -377,6 +439,62 @@ jn.create('h2',
 /*- @ common/tags/tags.jn.html -*/
 
 jn.setLevel('desktop');
+/*- desktop/about-me/about-me.jn.html @ -*/
+
+jn.create('about-me',
+'<div class="about-me">' +
+'    <div class="about-me__content">' +
+'        <p>[% lang:about_me.text1 %]</p>' +
+'        <p>[% lang:about_me.text2 %]</p>' +
+'        <p>[% lang:about_me.text3 %]</p>' +
+'        <p>[% lang:about_me.text4 %]</p>' +
+'        <div class="about-me__splitter"></div>' +
+'        <p>[% lang:footer.mobile %]</p>' +
+'        <p>[% lang:footer.github %]</p>' +
+'        <p>[% lang:footer.past_cv %]</p>' +
+'    </div>' +
+'</div>'); 
+/*- @ desktop/about-me/about-me.jn.html -*/
+/*- desktop/about-techs/about-techs.jn.html @ -*/
+
+jn.create('about-techs__layout',
+'<div class="about-techs">' +
+'    [% lines %]' +
+'</div>');
+jn.create('about-techs__line',
+'<div class="about-techs__line">' +
+'    <div class="about-techs__left">' +
+'        [% name %]' +
+'    </div>' +
+'    <div class="about-techs__right">' +
+'        [% desc %]' +
+'    </div>' +
+'</div>'); 
+/*- @ desktop/about-techs/about-techs.jn.html -*/
+/*- desktop/about-techs/about-techs.jn.js @ -*/
+jn.create('about-techs', function() {
+    var content = [];
+    for (var i = 0; i < 5; i++) {
+        content.push(
+            jn.exec('about-techs__line', {
+                name: '[% lang:techs.' + i + '.name %]',
+                desc: '[% lang:techs.' + i + '.desc %]'
+            })
+        );
+    }
+
+    return jn.exec('about-techs__layout', {
+        lines: content.join('')
+    });
+}); 
+/*- @ desktop/about-techs/about-techs.jn.js -*/
+/*- desktop/box/box.jn.html @ -*/
+
+jn.create('box',
+'<div class="box">' +
+'    [% content %]' +
+'</div>'); 
+/*- @ desktop/box/box.jn.html -*/
 /*- desktop/columns/columns.jn.html @ -*/
 
 jn.create('columns',
@@ -389,37 +507,6 @@ jn.create('columns',
 '    </div>' +
 '</div>'); 
 /*- @ desktop/columns/columns.jn.html -*/
-/*- desktop/box/box.jn.html @ -*/
-
-jn.create('box',
-'<div class="box">' +
-'    [% content %]' +
-'</div>'); 
-/*- @ desktop/box/box.jn.html -*/
-/*- desktop/text/text.jn.html @ -*/
-
-jn.create('text',
-'<div class="text">' +
-'    [% text %]' +
-'</div>'); 
-/*- @ desktop/text/text.jn.html -*/
-/*- desktop/about-techs/about-techs.jn.html @ -*/
- 
-/*- @ desktop/about-techs/about-techs.jn.html -*/
-/*- desktop/about-techs/about-techs.jn.js @ -*/
-jn.create('about-techs', function() {
-
-    return jn.exec('columns', {
-        cls: 'about-techs',
-        left: jn.exec('box', {
-            content: '[% lang:techs.text1 %]'
-        }),
-        right: jn.exec('text', {
-            text: '[% lang:techs.text2 %]'
-        })
-    });
-}); 
-/*- @ desktop/about-techs/about-techs.jn.js -*/
 /*- desktop/detector/detector.jn.html @ -*/
  
 /*- @ desktop/detector/detector.jn.html -*/
@@ -433,9 +520,7 @@ jn.create('paranja',
 '    <div class="paranja__bg"></div>' +
 '    <div class="paranja__content">' +
 '        <p>[% lang:paranja.hello %]</p>' +
-'        <p>' +
-'            [% lang:paranja.prev_version %] - <a class="link" href="#">#</a>' +
-'        </p>' +
+'        <p>[% lang:paranja.prev_version %]</p>' +
 '    </div>' +
 '</div>'); 
 /*- @ desktop/paranja/paranja.jn.html -*/
@@ -474,23 +559,55 @@ jn.create('top', function () {
 
 jn.create('menu',
 '<div class="menu">' +
-'    <div class="menu__item">Опыт работы</div>' +
-'    <div class="menu__item menu__item_selected">Образование</div>' +
-'    <div class="menu__item">О проектах</div>' +
-'    <div class="menu__item">Обо мне</div>' +
+'    <div class="menu__item menu__item_selected_yes" data-menu="work-list">[% lang:menu.work_list %]</div>' +
+'    <div class="menu__item" data-menu="edu-list">[% lang:menu.edu_list %]</div>' +
+'    <div class="menu__item" data-menu="about-techs">[% lang:menu.about_techs %]</div>' +
+'    <div class="menu__item" data-menu="about-me">[% lang:menu.about_me %]</div>' +
 '</div>'); 
 /*- @ desktop/menu/menu.jn.html -*/
 /*- desktop/menu/menu.js @ -*/
-// (function() {
-//     var oldOnload = window.onload;
-//     window.onload = function() {
-//         if (oldOnload) {
-//             oldOnload();
-//         }
+(function() {
+    var oldOnload = window.onload,
+        LS_KEY = 'vk.gh.cv3.menu';
 
+    window.onload = function() {
+        if (oldOnload) {
+            oldOnload();
+        }
 
-//     };
-// })(); 
+        var body = document.body,
+            menuItems = Array.from(document.getElementsByClassName('menu__item')),
+            lsValue;
+
+        try {
+            lsValue = localStorage.getItem(LS_KEY);
+            home.setMod(body, 'body', 'page', lsValue);
+            menuItems.forEach(function(item) {
+                home.setMod(item, 'menu__item', 'selected', 'no');
+
+                if (home.attr(item, 'data-menu') === lsValue) {
+                    home.setMod(item, 'menu__item', 'selected', 'yes');
+                }
+            });
+        } catch (e) {/*pass*/}
+
+        menuItems.forEach(function(item) {
+            item.onclick = function() {
+                var menuValue = home.attr(this, 'data-menu');
+
+                menuItems.forEach(function(item) {
+                    home.setMod(item, 'menu__item', 'selected', 'no');
+                });
+                home.setMod(this, 'menu__item', 'selected', 'yes');
+                home.setMod(body, 'body', 'page', menuValue);
+
+                try {
+                    localStorage.setItem(LS_KEY, menuValue);
+                } catch (e) {/*pass*/}
+            };
+        });
+    };
+})(); 
 /*- @ desktop/menu/menu.js -*/
 /*- desktop/timeline/timeline.jn.html @ -*/
 
@@ -514,6 +631,153 @@ jn.create('timeline__desc',
 '    <div>[% desc %]</div>' +
 '</div>'); 
 /*- @ desktop/timeline/timeline.jn.html -*/
+/*- desktop/footer/footer.jn.html @ -*/
+
+jn.create('footer',
+'<div class="footer">' +
+'    <div class="footer__content">' +
+'        [% content %]' +
+'    </div>' +
+'</div>'); 
+/*- @ desktop/footer/footer.jn.html -*/
+/*- desktop/work-list/work-list.jn.html @ -*/
+ 
+/*- @ desktop/work-list/work-list.jn.html -*/
+/*- desktop/work-list/work-list.jn.js @ -*/
+jn.create('work-list', function() {
+    var result = [],
+        TOTAL_COUNT = 3,
+        cls, left, right, tmp;
+
+    for (var i = 0; i < TOTAL_COUNT; i++) {
+        cls = (i === 0 ? 'timeline_first' : '');
+        cls = (i === TOTAL_COUNT - 1 ? 'timeline_last' : cls);
+
+        left = jn.exec('timeline__date', {
+            date: '[% lang:work.' + i + '.date %]'
+        });
+
+        right = jn.exec('timeline__desc', {
+            label: '[% lang:work.' + i + '.label %]',
+            position: '[% lang:work.' + i + '.position %]',
+            desc: '[% lang:work.' + i + '.desc %]'
+        });
+
+        if (i % 2) {
+            tmp = left;
+            left = right;
+            right = tmp;
+        }
+        
+        result.push(
+            jn.exec('timeline', {
+                cls: cls,
+                left: left,
+                right: right
+            })
+        );
+    }
+
+    return jn.exec('div', {
+        cls: 'work-list',
+        content: result.join('') +
+            jn.exec('footer', {
+                content: '[% lang:work.footer %]'
+            })
+    });
+});
+ 
+/*- @ desktop/work-list/work-list.jn.js -*/
+/*- desktop/edu-list/edu-list.jn.html @ -*/
+ 
+/*- @ desktop/edu-list/edu-list.jn.html -*/
+/*- desktop/edu-list/edu-list.jn.js @ -*/
+jn.create('edu-list', function() {
+    var result = [],
+        TOTAL_COUNT = 3,
+        cls, left, right, tmp;
+
+    for (var i = 0; i < TOTAL_COUNT; i++) {
+        cls = (i === 0 ? 'timeline_first' : '');
+        cls = (i === TOTAL_COUNT - 1 ? 'timeline_last' : cls);
+
+        left = jn.exec('timeline__date', {
+            date: '[% lang:edu.' + i + '.date %]'
+        });
+
+        right = jn.exec('timeline__desc', {
+            label: '[% lang:edu.' + i + '.label %]',
+            position: '[% lang:edu.' + i + '.position %]',
+            desc: '[% lang:edu.' + i + '.desc %]'
+        });
+
+        if (i % 2) {
+            tmp = left;
+            left = right;
+            right = tmp;
+        }
+        
+        result.push(
+            jn.exec('timeline', {
+                cls: cls,
+                left: left,
+                right: right
+            })
+        );
+    }
+
+    return jn.exec('div', {
+        cls: 'edu-list',
+        content: result.join('') +
+            jn.exec('footer', {
+                content: '[% lang:edu.footer %]'
+            })
+    });
+});
+ 
+/*- @ desktop/edu-list/edu-list.jn.js -*/
+/*- desktop/document/document.jn.html @ -*/
+
+jn.create('document',
+'<!DOCTYPE html>' +
+'<html class="js__support_no js__good_no flex__support_no">' +
+'<head>' +
+'	<title>[% lang:page.title %]</title>' +
+'    <meta charset="utf-8">' +
+'    [% inline__js-detector %]' +
+'    [% inline__css-reset %]' +
+'    <link rel="stylesheet" href="./index.css">' +
+'    [% inline__js-lib %]' +
+'    <script type="text/javascript" src="./desktop/menu/menu.js"></script>' +
+'</head>' +
+'<body class="body_page_work-list">' +
+'    [% paranja %]' +
+'    <div class="content">' +
+'        <div class="content__center">' +
+'            [% top %]' +
+'            [% menu %]' +
+'            [% work-list %]' +
+'            [% edu-list %]' +
+'            [% about-techs %]' +
+'            [% about-me %]' +
+'        </div>' +
+'    </div>' +
+'</body>' +
+'</html>'); 
+/*- @ desktop/document/document.jn.html -*/
+/*- desktop/double-box/double-box.jn.html @ -*/
+
+jn.create('double-box',
+'<div class="double-box">' +
+'    <div class="double-box__left">' +
+'        [% left %]' +
+'    </div>' +
+'    <div class="double-box__right">' +
+'        <div class="double-box__gap"></div>' +
+'        [% right %]' +
+'    </div>' +
+'</div>'); 
+/*- @ desktop/double-box/double-box.jn.html -*/
 /*- desktop/history/history.jn.html @ -*/
  
 /*- @ desktop/history/history.jn.html -*/
@@ -556,57 +820,10 @@ jn.create('history', function() {
 });
  
 /*- @ desktop/history/history.jn.js -*/
-/*- desktop/footer/footer.jn.html @ -*/
+/*- desktop/text/text.jn.html @ -*/
 
-jn.create('footer',
-'<div class="footer">' +
-'    <div class="footer__content">' +
-'        <p>[% lang:techs.text1 %]</p>' +
-'        <p>[% lang:techs.text2 %]</p>' +
-'        <p>[% lang:footer.about.common %]</p>' +
-'        <p>[% lang:footer.about.bank %]</p>' +
-'        <p>[% lang:footer.about.yandex %]</p>' +
-'        <p>[% lang:footer.mobile %]</p>' +
-'        <p>[% lang:footer.github %]</p>' +
-'        <p>[% lang:footer.past_cv %]</p>' +
-'    </div>' +
+jn.create('text',
+'<div class="text">' +
+'    [% text %]' +
 '</div>'); 
-/*- @ desktop/footer/footer.jn.html -*/
-/*- desktop/document/document.jn.html @ -*/
-
-jn.create('document',
-'<!DOCTYPE html>' +
-'<html class="js__support_no js__good_no flex__support_no">' +
-'<head>' +
-'	<title>[% lang:page.title %]</title>' +
-'    <meta charset="utf-8">' +
-'    [% inline__js-detector %]' +
-'    [% inline__css-reset %]' +
-'    <link rel="stylesheet" href="./index.css">' +
-'</head>' +
-'<body>' +
-'    [% paranja %]' +
-'    <div class="content">' +
-'        <div class="content__center">' +
-'            [% top %]' +
-'            <!--[% menu %]-->' +
-'            [% history %]' +
-'            [% footer %]' +
-'        </div>' +
-'    </div>' +
-'</body>' +
-'</html>'); 
-/*- @ desktop/document/document.jn.html -*/
-/*- desktop/double-box/double-box.jn.html @ -*/
-
-jn.create('double-box',
-'<div class="double-box">' +
-'    <div class="double-box__left">' +
-'        [% left %]' +
-'    </div>' +
-'    <div class="double-box__right">' +
-'        <div class="double-box__gap"></div>' +
-'        [% right %]' +
-'    </div>' +
-'</div>'); 
-/*- @ desktop/double-box/double-box.jn.html -*/
+/*- @ desktop/text/text.jn.html -*/

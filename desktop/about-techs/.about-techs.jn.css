@@ -1,7 +1,29 @@
-.about-techs .columns__left,
-.about-techs .columns__right {
-  padding-top: 6.4rem;
+.about-techs {
+  display: none;
+  background-color: #3f414e;
+  color: #fbfbfb;
+  padding-bottom: 4.8rem;
+  flex-direction: column;
 }
-.about-techs .text {
-  padding-top: 3.2rem;
+.body_page_about-techs .about-techs {
+  display: flex;
+}
+.about-techs__line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2.4rem;
+}
+.about-techs__line:last-child {
+  margin-bottom: 0;
+}
+.about-techs__left {
+  flex: 1 1 30%;
+  margin-left: 4.8rem;
+  color: #f17351;
+}
+.about-techs__right {
+  flex: 1 1 70%;
+  padding-right: 4.8rem;
+  padding-left: 2.4rem;
 }

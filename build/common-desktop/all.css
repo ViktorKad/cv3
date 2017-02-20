@@ -35,6 +35,75 @@
 }
  
 /*- @ common/tags/.tags.jn.css -*/
+/*- desktop/about-me/.about-me.jn.css @ -*/
+.about-me {
+  display: none;
+  background-color: #3f414e;
+  color: #fbfbfb;
+}
+.body_page_about-me .about-me {
+  display: block;
+}
+.about-me__content {
+  padding-bottom: 2.8rem;
+}
+.about-me p {
+  margin-bottom: 2rem;
+  padding: 0 4.8rem;
+}
+.about-me__splitter {
+  border-bottom: 1px solid #f17351;
+  margin-bottom: 2rem;
+}
+ 
+/*- @ desktop/about-me/.about-me.jn.css -*/
+/*- desktop/about-techs/.about-techs.jn.css @ -*/
+.about-techs {
+  display: none;
+  background-color: #3f414e;
+  color: #fbfbfb;
+  padding-bottom: 4.8rem;
+  flex-direction: column;
+}
+.body_page_about-techs .about-techs {
+  display: flex;
+}
+.about-techs__line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2.4rem;
+}
+.about-techs__line:last-child {
+  margin-bottom: 0;
+}
+.about-techs__left {
+  flex: 1 1 30%;
+  margin-left: 4.8rem;
+  color: #f17351;
+}
+.about-techs__right {
+  flex: 1 1 70%;
+  padding-right: 4.8rem;
+  padding-left: 2.4rem;
+}
+ 
+/*- @ desktop/about-techs/.about-techs.jn.css -*/
+/*- desktop/box/.box.jn.css @ -*/
+.box {
+  padding: 3.2rem;
+  letter-spacing: 1px;
+}
+.columns__left .box {
+  background-color: #f17351;
+  color: #fff;
+}
+.columns__right .box {
+  border: 0.6rem solid #fbfbfb;
+  color: #fbfbfb;
+}
+ 
+/*- @ desktop/box/.box.jn.css -*/
 /*- desktop/columns/.columns.jn.css @ -*/
 .columns {
   display: flex;
@@ -56,31 +125,6 @@
 }
  
 /*- @ desktop/columns/.columns.jn.css -*/
-/*- desktop/box/.box.jn.css @ -*/
-.box {
-  padding: 3.2rem;
-  letter-spacing: 1px;
-}
-.columns__left .box {
-  background-color: #f17351;
-  color: #fff;
-}
-.columns__right .box {
-  border: 0.6rem solid #fbfbfb;
-  color: #fbfbfb;
-}
- 
-/*- @ desktop/box/.box.jn.css -*/
-/*- desktop/about-techs/.about-techs.jn.css @ -*/
-.about-techs .columns__left,
-.about-techs .columns__right {
-  padding-top: 6.4rem;
-}
-.about-techs .text {
-  padding-top: 3.2rem;
-}
- 
-/*- @ desktop/about-techs/.about-techs.jn.css -*/
 /*- desktop/paranja/.paranja.jn.css @ -*/
 .paranja {
   z-index: 100;
@@ -179,7 +223,7 @@
   cursor: pointer;
   background-color: #494b58;
 }
-.menu__item_selected {
+.menu__item_selected_yes {
   border-top: 0.4rem solid #f17351;
   border-bottom: 0.4rem solid #f17351;
   color: #f17351;
@@ -281,6 +325,24 @@
 }
  
 /*- @ desktop/footer/.footer.jn.css -*/
+/*- desktop/work-list/.work-list.jn.css @ -*/
+.work-list {
+  display: none;
+}
+.body_page_work-list .work-list {
+  display: block;
+}
+ 
+/*- @ desktop/work-list/.work-list.jn.css -*/
+/*- desktop/edu-list/.edu-list.jn.css @ -*/
+.edu-list {
+  display: none;
+}
+.body_page_edu-list .edu-list {
+  display: block;
+}
+ 
+/*- @ desktop/edu-list/.edu-list.jn.css -*/
 /*- desktop/document/.document.jn.css @ -*/
 html {
   font-size: 10px;

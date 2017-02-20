@@ -5,3 +5,10 @@
 .footer_last {
   padding-bottom: 2rem;
 }
+.footer__tech-name {
+  color: #f17351;
+}
+.footer__splitter {
+  border-top: 1px solid #f17351;
+  margin-top: 2rem;
+}

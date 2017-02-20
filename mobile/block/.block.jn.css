@@ -26,3 +26,6 @@
 .block_title_off .block__title {
   display: none;
 }
+.block_title_left .block__title {
+  text-align: start;
+}

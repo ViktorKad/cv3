@@ -18,7 +18,7 @@
   cursor: pointer;
   background-color: #494b58;
 }
-.menu__item_selected {
+.menu__item_selected_yes {
   border-top: 0.4rem solid #f17351;
   border-bottom: 0.4rem solid #f17351;
   color: #f17351;
