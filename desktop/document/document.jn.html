@@ -7,15 +7,19 @@
     [% inline__js-detector %]
     [% inline__css-reset %]
     <link rel="stylesheet" href="./index.css">
+    [% inline__js-lib %]
+    <script type="text/javascript" src="./desktop/menu/menu.js"></script>
 </head>
-<body>
+<body class="body_page_work-list">
     [% paranja %]
     <div class="content">
         <div class="content__center">
             [% top %]
-            <!--[% menu %]-->
-            [% history %]
-            [% footer %]
+            [% menu %]
+            [% work-list %]
+            [% edu-list %]
+            [% about-techs %]
+            [% about-me %]
         </div>
     </div>
 </body>

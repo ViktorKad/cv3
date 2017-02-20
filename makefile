@@ -1,8 +1,13 @@
-all: *
+JN_REPO = https://github.com/ViktorKad/jn.git
+JN_NPM = node_modules/jn/bin/jn
+
+.PHONY: all clean init public
+
+all: desktop mobile
 	rm -rf ./build
 
-	node node_modules/jn/bin/jn --makestyl
-	node node_modules/jn/bin/jn --makecode
+	node $(JN_NPM) --makestyl
+	node $(JN_NPM) --makecode
 
 	cp ./build/common-desktop/index.ru.html ./index.html
 	cp ./build/common-desktop/all.css ./index.css
@@ -11,7 +16,7 @@ all: *
 	cp ./build/common-mobile/all.css ./m.index.css
 
 init:
-	@if [ ! -d "node_modules/jn" ]; then npm install https://github.com/ViktorKad/jn.git; fi
+	@if [ ! -d "node_modules/jn" ]; then npm install $(JN_REPO); fi
 
 clean:
 	rm -rf ./*/*/.*.jn.css

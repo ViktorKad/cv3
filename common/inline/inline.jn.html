@@ -22,9 +22,12 @@
 })();
 
 (function() {
+    var arr = ['filter', 'forEach', 'map', 'reduce', 'some', 'from'];
     // Проверка поддержки нужных js функций
-    if (!Array.prototype.filter) {
-        return;
+    for (var i = 0; i < arr.length; i++) {
+        if (!(Array.prototype[arr[i]] || Array[arr[i]])) {
+            return;
+        }
     }
 
     window.isGoodJsSupport = true;
@@ -32,8 +35,6 @@
 
 (function() {
     var html = document.getElementsByTagName('html')[0];
-
-    setMod(html, 'js', 'support', 'yes');
 
     if (window.isFlexboxOn) {
         setMod(html, 'flex', 'support', 'yes');
@@ -113,3 +114,66 @@ table {
     border-spacing: 0;
 }
 </style>
+
+
+<!--:inline__js-lib:-->
+<script type="text/javascript">
+(function() {
+    'use strict';
+    if (typeof window.home !== 'object') {
+        window.home = Object.create(null);
+    }
+
+    home.attr = function(elem, name, value) {
+        if (typeof value === 'undefined') {
+            return elem.getAttribute(name);
+        }
+
+        elem.setAttribute(name, value);
+
+        return elem;
+    }
+    
+    window.home.setMod = function(elem, cls, mod, value) {
+        var SPLITTER_VAL = '_',
+            SPLITTER_CLS = '__',
+            isModExist = false;
+
+        elem.className = elem.className.trim().split(' ').map(function(item) {
+            if (!item) {
+                return;
+            }
+
+            var itemSplitCls = item.split(SPLITTER_CLS);
+
+            if (!itemSplitCls[1]) {
+                return;
+            }
+
+            var itemSplitMod = itemSplitCls[1].split(SPLITTER_VAL),
+                modName = itemSplitMod[1],
+                clsName = itemSplitCls[0] + SPLITTER_CLS + itemSplitMod[0];
+            
+            if (clsName !== cls) {
+                return item;
+            }
+            
+            if (itemSplitMod.length === 2) {
+                isModExist = true;
+                return clsName + SPLITTER_VAL + value;
+            }
+
+            if (modName === mod) {
+                isModExist = true;
+                return clsName + SPLITTER_VAL + mod + SPLITTER_VAL + value;
+            }
+
+            return item;
+        }).join(' ');
+
+        if (!isModExist) {
+            elem.className += ' ' + cls + SPLITTER_VAL + mod + SPLITTER_VAL + value;
+        }
+    }
+})();
+</script>
