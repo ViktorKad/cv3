@@ -64,7 +64,7 @@
      */
     jn._execDataAndTmpls = function(tmplCode, data) {
         let result = tmplCode,
-            REPLACE_PATTERN = /\[%\s{1}[a-zA-Z0-9_\-]+\s%\]/g,
+            REPLACE_PATTERN = /\[%\s{1}[a-zA-Z_\-]+\s%\]/g,
             REPLACE_PATTERN_LANG = /\[%\s{1}[a-zA-Z_-]+:{1}[a-zA-Z0-9_\-\.]+\s%\]/g,
             tmpName, replacable, replacableLang, keyArr;
 
@@ -118,7 +118,7 @@
      */
     jn.execFrom = function(name, level, data) {
         var result = '',
-            REPLACE_PATTERN = /\[%\s{1}[a-zA-Z0-9_-]+\s%\]/g,
+            REPLACE_PATTERN = /\[%\s{1}[a-zA-Z_-]+\s%\]/g,
             tmpName, replacable;
         
         if (typeof jn._tmpls[name] === 'undefined') {
@@ -431,8 +431,9 @@ jn.create('link',
 jn.create('p',
 '<p class="[% cls %]">' +
 '    [% text %]' +
-'</p>');
-jn.create('h2',
+'</p>' +
+'' +
+'<!--:h2:-->' +
 '<h2 class="[% cls %]">' +
 '    [% text %]' +
 '</h2>'); 
@@ -448,6 +449,7 @@ jn.create('about-me',
 '        <p>[% lang:about_me.text2 %]</p>' +
 '        <p>[% lang:about_me.text3 %]</p>' +
 '        <p>[% lang:about_me.text4 %]</p>' +
+'        <p>[% lang:about_me.text5 %]</p>' +
 '        <div class="about-me__splitter"></div>' +
 '        <p>[% lang:footer.mobile %]</p>' +
 '        <p>[% lang:footer.github %]</p>' +
@@ -649,7 +651,7 @@ jn.create('footer',
 /*- desktop/work-list/work-list.jn.js @ -*/
 jn.create('work-list', function() {
     var result = [],
-        TOTAL_COUNT = 3,
+        TOTAL_COUNT = 5,
         cls, left, right, tmp;
 
     for (var i = 0; i < TOTAL_COUNT; i++) {

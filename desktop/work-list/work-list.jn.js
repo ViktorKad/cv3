@@ -1,6 +1,6 @@
 jn.create('work-list', function() {
     var result = [],
-        TOTAL_COUNT = 3,
+        TOTAL_COUNT = 5,
         cls, left, right, tmp;
 
     for (var i = 0; i < TOTAL_COUNT; i++) {
